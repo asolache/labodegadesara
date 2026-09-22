@@ -1,0 +1,73 @@
+name: Sincronizar contenido
+
+# Trae lo que Sara ha escrito en Google y lo publica.
+#
+#   · Cada hora, de forma automática.
+#   · A mano desde la pestaña Actions (botón "Run workflow"), cuando hay prisa.
+#   · Al tocar las plantillas o el propio sincronizador.
+
+on:
+  schedule:
+    - cron: '17 * * * *'   # cada hora, en el minuto 17
+  workflow_dispatch:        # botón manual
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - 'parciales/**'
+      - 'assets/js/**'
+
+# Permite confirmar y subir los cambios del contenido.
+permissions:
+  contents: write
+
+# Si se lanza otra sincronización mientras hay una en marcha, espera.
+concurrency:
+  group: sincronizar-contenido
+  cancel-in-progress: false
+
+jobs:
+  sincronizar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Traer el contenido y regenerar las páginas
+        run: node scripts/sync.mjs
+
+      - name: Comprobar el HTML
+        run: node scripts/comprobar.mjs
+
+      - name: Publicar si hay cambios
+        run: |
+          git config user.name  "Sincronización de contenido"
+          git config user.email "actions@github.com"
+
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Sin cambios: no hay nada que publicar."
+            exit 0
+          fi
+
+          git add -A
+          git commit -m "Contenido: sincronización del $(date -u '+%d/%m/%Y a las %H:%M UTC')"
+
+          # Reintentos por si otra ejecución ha subido algo mientras tanto.
+          for intento in 1 2 3; do
+            if git push; then
+              echo "Publicado."
+              exit 0
+            fi
+            echo "Reintento $intento…"
+            git pull --rebase --autostash
+            sleep $((intento * 3))
+          done
+
+          echo "No se ha podido publicar después de 3 intentos."
+          exit 1

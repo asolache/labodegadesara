@@ -1,0 +1,11 @@
+# Dependencias: el proyecto no necesita ninguna para funcionar.
+node_modules/
+package-lock.json
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Temporales
+.tmp-caps/
+*.log

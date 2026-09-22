@@ -1,0 +1,134 @@
+/* ==========================================================================
+   LA BODEGA DE SARA · Tokens de diseño
+   Sistema de variables. No escribas colores ni tamaños "a pelo" en main.css:
+   añádelos aquí y úsalos con var(). Así la marca se cambia en un solo sitio.
+   ========================================================================== */
+
+:root {
+  /* ---------- Color · Paleta de marca ------------------------------------
+     Sacada de la luz de las fotos de Sara: penumbra cálida, foco dorado,
+     cerámica y vino. Nada de negro puro ni blanco puro: siempre con
+     temperatura, porque la marca es acogedora, no clínica.                */
+
+  --c-crema:        #faf6f0; /* fondo principal, "papel de carta"          */
+  --c-crema-2:      #f2eade; /* fondo alterno de secciones                 */
+  --c-arena:        #e6dac7; /* bordes suaves, separadores                 */
+
+  --c-tinta:        #2a211c; /* texto principal (marrón muy oscuro)        */
+  --c-tinta-suave:  #5c4f47; /* texto secundario                           */
+  --c-tinta-tenue:  #8a7b70; /* metadatos, pies de foto                    */
+
+  --c-oro:          #b47d2b; /* acento principal: la luz de las fotos      */
+  --c-oro-claro:    #d9a441; /* hover, detalles, subrayados                */
+  --c-oro-velo:     #f5e6cd; /* fondos de etiqueta                         */
+
+  --c-vino:         #6b2333; /* acento profundo: tinto                     */
+  --c-oliva:        #6a6a4c; /* acento terciario: campo, viña              */
+
+  --c-penumbra:     #191310; /* fondo oscuro (hero, footer)                */
+  --c-penumbra-2:   #241b16; /* superficie elevada sobre penumbra          */
+
+  --c-ok:           #4f7a52;
+  --c-alerta:       #a8452f;
+
+  /* ---------- Color · Roles semánticos -----------------------------------
+     Usa SIEMPRE estos en los componentes. Si algún día la marca cambia de
+     paleta, sólo se reasignan aquí arriba.                                */
+
+  --fondo:            var(--c-crema);
+  --fondo-alt:        var(--c-crema-2);
+  --fondo-oscuro:     var(--c-penumbra);
+  --superficie:       #fffdfa;
+  --borde:            var(--c-arena);
+  --borde-fuerte:     #d3c3a9;
+
+  --texto:            var(--c-tinta);
+  --texto-suave:      var(--c-tinta-suave);
+  --texto-tenue:      var(--c-tinta-tenue);
+  --texto-inverso:    #f6efe4;
+  --texto-inverso-2:  #c9bcab;
+
+  --acento:           var(--c-oro);
+  --acento-hover:     var(--c-oro-claro);
+  --foco:             var(--c-oro-claro);
+
+  /* ---------- Tipografía --------------------------------------------------
+     Fraunces: serif variable, cálida y artesanal → titulares.
+     Karla: sans humanista, muy legible en castellano → texto corrido.
+     Ambas con pila de respaldo del sistema por si Google Fonts no carga.  */
+
+  --font-titulo: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype',
+                 'Book Antiqua', Georgia, serif;
+  --font-texto:  'Karla', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* Escala tipográfica fluida (clamp: móvil → escritorio) */
+  --t-xs:   0.78rem;
+  --t-sm:   0.875rem;
+  --t-base: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  --t-md:   clamp(1.125rem, 1.07rem + 0.28vw, 1.25rem);
+  --t-lg:   clamp(1.35rem, 1.22rem + 0.6vw, 1.7rem);
+  --t-xl:   clamp(1.7rem, 1.45rem + 1.15vw, 2.4rem);
+  --t-2xl:  clamp(2.1rem, 1.6rem + 2.3vw, 3.4rem);
+  --t-3xl:  clamp(2.6rem, 1.8rem + 3.6vw, 4.6rem);
+
+  --lh-apretado: 1.12;
+  --lh-titulo:   1.2;
+  --lh-texto:    1.7;
+
+  --ls-titular:  -0.015em;
+  --ls-epigrafe: 0.16em;  /* para los antetítulos en mayúsculas */
+
+  /* ---------- Espaciado (escala de 4px) ---------------------------------- */
+  --e-1:  0.25rem;
+  --e-2:  0.5rem;
+  --e-3:  0.75rem;
+  --e-4:  1rem;
+  --e-5:  1.5rem;
+  --e-6:  2rem;
+  --e-7:  3rem;
+  --e-8:  4rem;
+  --e-9:  6rem;
+
+  /* Aire vertical entre secciones, fluido */
+  --seccion-y: clamp(3.5rem, 2rem + 7vw, 7rem);
+
+  /* ---------- Medidas ---------------------------------------------------- */
+  --ancho-max:    76rem;   /* contenedor general                           */
+  --ancho-texto:  38rem;   /* medida de lectura cómoda (~70 caracteres)    */
+  --ancho-ancho:  88rem;   /* contenedor extra para galerías              */
+  --gutter:       clamp(1.25rem, 0.8rem + 2.2vw, 3rem);
+
+  /* ---------- Formas y sombras ------------------------------------------- */
+  --r-sm:   4px;
+  --r-md:   8px;
+  --r-lg:   16px;
+  --r-full: 999px;
+
+  --sombra-sm: 0 1px 2px rgba(42, 33, 28, 0.06),
+               0 2px 8px rgba(42, 33, 28, 0.04);
+  --sombra-md: 0 4px 12px rgba(42, 33, 28, 0.07),
+               0 12px 32px rgba(42, 33, 28, 0.06);
+  --sombra-lg: 0 8px 24px rgba(42, 33, 28, 0.10),
+               0 24px 60px rgba(42, 33, 28, 0.10);
+
+  /* ---------- Movimiento -------------------------------------------------- */
+  --t-rapida: 140ms;
+  --t-media:  260ms;
+  --t-lenta:  520ms;
+  --ease:     cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* ---------- Capas ------------------------------------------------------- */
+  --z-base:    1;
+  --z-sticky:  50;
+  --z-nav:     100;
+  --z-modal:   200;
+}
+
+/* Respeta a quien pide menos movimiento en su sistema operativo. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-rapida: 0ms;
+    --t-media:  0ms;
+    --t-lenta:  0ms;
+  }
+}

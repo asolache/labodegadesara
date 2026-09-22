@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- #incluir head -->
+<!-- /#incluir -->
+
+<title>{{tituloPagina}}</title>
+<meta name="description" content="{{resumen}}">
+<link rel="canonical" href="{{url}}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{titulo}}">
+<meta property="og:description" content="{{resumen}}">
+<meta property="og:image" content="{{imagenAbsoluta}}">
+<meta property="og:url" content="{{url}}">
+<meta property="article:published_time" content="{{fechaISO}}">
+
+<script type="application/ld+json">
+{{jsonld}}
+</script>
+</head>
+
+<body>
+<!-- #incluir cabecera -->
+<!-- /#incluir -->
+
+<main id="contenido">
+
+  <section class="cabecera-pagina">
+    <div class="contenedor contenedor--texto">
+      <nav class="migas" aria-label="Migas de pan">
+        <ol>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/blog.html">Blog</a></li>
+          <li aria-current="page">{{titulo}}</li>
+        </ol>
+      </nav>
+      <span class="epigrafe">{{categoria}}</span>
+      <h1>{{titulo}}</h1>
+      <p class="meta" style="margin-top: var(--e-4)">
+        <time datetime="{{fechaISO}}">{{fechaTexto}}</time>
+        <span>·</span>
+        <span>{{autor}}</span>
+      </p>
+    </div>
+  </section>
+
+  <article class="seccion">
+    <div class="contenedor">
+      {{portada}}
+
+      <div class="articulo">
+        {{cuerpo}}
+      </div>
+
+      <div class="contenedor--texto" style="margin-top: var(--e-8)">
+        <hr>
+        <div class="cta-final">
+          <span class="epigrafe">¿Te ha gustado?</span>
+          <h2>El vino se disfruta más acompañado</h2>
+          <p>
+            Si te apetece seguir la conversación con una copa delante, echa un
+            vistazo a las próximas catas.
+          </p>
+          <div class="grupo-botones">
+            <a class="boton boton--oro" href="/catas.html">Ver próximas catas</a>
+            <a class="boton boton--claro" href="/blog.html">Más artículos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<!-- #incluir pie -->
+<!-- /#incluir -->
+
+<script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

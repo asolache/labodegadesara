@@ -1,0 +1,13 @@
+{
+  "name": "labodegadesara",
+  "version": "1.0.0",
+  "description": "Web de La Bodega de Sara · catas, cartas de vino y representación de bodegas",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "sync": "node scripts/sync.mjs",
+    "dev": "node scripts/servidor.mjs",
+    "build": "node scripts/sync.mjs"
+  },
+  "engines": { "node": ">=18" }
+}

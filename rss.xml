@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>La Bodega de Sara · El cuaderno</title>
+    <link>https://labodegadesara.com/blog.html</link>
+    <description>Historias de bodegas, botellas y mesas compartidas.</description>
+    <language>es-ES</language>
+    <item>
+      <title>Cómo pedir vino en un restaurante sin sentirte un impostor</title>
+      <link>https://labodegadesara.com/blog/como-pedir-vino-en-un-restaurante-sin-sentirte-un-impostor.html</link>
+      <guid isPermaLink="true">https://labodegadesara.com/blog/como-pedir-vino-en-un-restaurante-sin-sentirte-un-impostor.html</guid>
+      <description>Tres preguntas que puedes hacerle a quien te atiende y que funcionan siempre, aunque no sepas nada de vino.</description>
+      <pubDate>Thu, 10 Sep 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Qué significa de verdad que un vino sea natural</title>
+      <link>https://labodegadesara.com/blog/que-significa-de-verdad-que-un-vino-sea-natural.html</link>
+      <guid isPermaLink="true">https://labodegadesara.com/blog/que-significa-de-verdad-que-un-vino-sea-natural.html</guid>
+      <description>La etiqueta más usada y peor explicada del mundo del vino, contada sin dogmas ni sermones.</description>
+      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
