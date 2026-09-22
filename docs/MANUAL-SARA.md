@@ -13,8 +13,8 @@ Guárdalos en favoritos. Son los únicos que vas a usar:
 
 | Qué es | Para qué sirve | Enlace |
 |---|---|---|
-| **Hoja de contenidos** | Catas y lista de artículos | *(pega aquí el enlace)* |
-| **Carpeta del blog** | Donde escribes los artículos | *(pega aquí el enlace)* |
+| **Hoja de contenidos** | Catas y lista de artículos | *https://docs.google.com/spreadsheets/d/1855lPpM2b3FG_D1kAitdqaf76YJmANXal9RAy7-7OBs/edit?gid=1865165858#gid=1865165858)* |
+| **Carpeta del blog** | Donde escribes los artículos | *https://drive.google.com/drive/folders/1ACb_KZlT7sFyC_P4-srnCLSQU0DvYArZ* |
 
 ---
 
