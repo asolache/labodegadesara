@@ -206,8 +206,130 @@ function revisarEnlaces(fichero, html, paginas) {
       ? posix.join(relativa, 'index.html')
       : relativa;
 
-    if (!existsSync(ruta(objetivo)) && !paginas.has(objetivo)) {
+    // Una dirección sin extensión apunta al index.html de esa carpeta.
+    const candidatos = [objetivo];
+    if (!objetivo.endsWith('.html')) {
+      candidatos.push(`${objetivo}/index.html`, `${objetivo}.html`);
+    }
+
+    if (!candidatos.some(c => existsSync(ruta(c)) || paginas.has(c))) {
       error(fichero, `enlace roto: ${destino}`);
+    }
+  }
+}
+
+/* ==========================================================================
+   SEO
+   ========================================================================== */
+
+/**
+ * Revisa lo que decide si una página se posiciona o no:
+ * canónica, datos estructurados válidos y metadatos únicos.
+ */
+function revisarSEO(fichero, html, vistos) {
+  // En una página excluida del índice, la calidad de los metadatos da igual.
+  const indexable = !/name="robots"[^>]*noindex/i.test(html);
+
+  /* --- Dirección canónica --- */
+  const canonical = (html.match(/<link[^>]*rel="canonical"[^>]*href="([^"]*)"/i) || [])[1];
+
+  if (!canonical) {
+    error(fichero, 'falta la dirección canónica');
+  } else {
+    if (!/^https:\/\//.test(canonical)) {
+      error(fichero, `la canónica no es absoluta: ${canonical}`);
+    }
+    if (/\.html$/.test(canonical) && !canonical.endsWith('/404.html')) {
+      aviso(fichero, `la canónica lleva extensión .html: ${canonical}`);
+    }
+
+    // La canónica tiene que corresponder con la ruta real del fichero.
+    const esperada = fichero === 'index.html'
+      ? '/'
+      : `/${fichero.replace(/index\.html$/, '')}`;
+
+    const ruta = canonical.replace(/^https?:\/\/[^/]+/, '');
+    if (ruta !== esperada && fichero !== '404.html') {
+      error(fichero, `la canónica (${ruta}) no coincide con la ruta real (${esperada})`);
+    }
+  }
+
+  /* --- Títulos y descripciones repetidos ---
+     Dos páginas con el mismo título compiten entre ellas en Google. */
+  const titulo = (html.match(/<title>([\s\S]*?)<\/title>/i) || [])[1]?.trim();
+  const desc = (html.match(/<meta[^>]*name="description"[^>]*content="([^"]*)"/i) || [])[1];
+
+  if (titulo) {
+    if (vistos.titulos.has(titulo)) {
+      error(fichero, `título repetido, ya está en ${vistos.titulos.get(titulo)}`);
+    } else {
+      vistos.titulos.set(titulo, fichero);
+    }
+    if (indexable && titulo.length < 15) {
+      aviso(fichero, `título muy corto (${titulo.length} caracteres)`);
+    }
+  }
+
+  if (desc) {
+    if (vistos.descripciones.has(desc)) {
+      error(fichero, `descripción repetida, ya está en ${vistos.descripciones.get(desc)}`);
+    } else {
+      vistos.descripciones.set(desc, fichero);
+    }
+    if (indexable && desc.length < 70) {
+      aviso(fichero, `descripción muy corta (${desc.length} caracteres)`);
+    }
+  }
+
+  /* --- Compartir en redes --- */
+  if (indexable && !/property="og:image"/.test(html)) aviso(fichero, 'sin og:image');
+  if (indexable && !/property="og:title"/.test(html)) aviso(fichero, 'sin og:title');
+
+  /* --- Datos estructurados --- */
+  const bloques = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)];
+
+  if (!bloques.length) {
+    error(fichero, 'sin datos estructurados');
+    return;
+  }
+
+  for (const bloque of bloques) {
+    let datos;
+    try {
+      datos = JSON.parse(bloque[1]);
+    } catch (e) {
+      error(fichero, `datos estructurados con JSON inválido: ${e.message}`);
+      continue;
+    }
+
+    const nodos = datos['@graph'] ?? [datos];
+
+    for (const nodo of nodos) {
+      if (!nodo['@type']) {
+        error(fichero, 'hay una entidad sin @type en los datos estructurados');
+      }
+
+      /* Un FAQPage cuyas preguntas no estén a la vista incumple las
+         directrices de Google. Se comprueba que cada una aparezca. */
+      if (nodo['@type'] === 'FAQPage') {
+        for (const pregunta of nodo.mainEntity ?? []) {
+          const enPagina = html.includes(
+            pregunta.name.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                         .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+                         .replace(/'/g, '&#39;'));
+          if (!enPagina) {
+            error(fichero,
+              `la pregunta «${pregunta.name.slice(0, 45)}…» está en los datos ` +
+              'estructurados pero no se ve en la página');
+          }
+        }
+      }
+
+      /* Un evento sin fecha o sin lugar no sale en los resultados. */
+      if (nodo['@type'] === 'Event') {
+        if (!nodo.startDate) error(fichero, `evento «${nodo.name}» sin fecha de inicio`);
+        if (!nodo.location) error(fichero, `evento «${nodo.name}» sin lugar`);
+      }
     }
   }
 }
@@ -216,16 +338,32 @@ function revisarEnlaces(fichero, html, paginas) {
    Principal
    ========================================================================== */
 
-const paginas = [
-  ...(await readdir(RAIZ)).filter(f => f.endsWith('.html')),
-  ...(existsSync(ruta('blog'))
-      ? (await readdir(ruta('blog'))).map(f => `blog/${f}`)
-      : [])
-];
+/** Todas las páginas publicables, estén donde estén. */
+async function todasLasPaginas(dir = '') {
+  const IGNORAR = new Set(['parciales', 'scripts', 'seo', 'docs', 'data',
+                           'assets', 'node_modules', '.github']);
+  const salida = [];
+
+  for (const entrada of await readdir(ruta(dir), { withFileTypes: true })) {
+    const relativa = dir ? `${dir}/${entrada.name}` : entrada.name;
+    if (entrada.isDirectory()) {
+      if (IGNORAR.has(entrada.name) || entrada.name.startsWith('.')) continue;
+      salida.push(...await todasLasPaginas(relativa));
+    } else if (entrada.name.endsWith('.html')) {
+      salida.push(relativa);
+    }
+  }
+  return salida;
+}
+
+const paginas = await todasLasPaginas();
 
 const conjunto = new Set(paginas);
 
 console.log(`\n\x1b[1mComprobando ${paginas.length} páginas…\x1b[0m\n`);
+
+/* Para detectar títulos y descripciones repetidos entre páginas. */
+const vistos = { titulos: new Map(), descripciones: new Map() };
 
 for (const pagina of paginas) {
   const html = await readFile(ruta(pagina), 'utf8');
@@ -238,6 +376,7 @@ for (const pagina of paginas) {
   revisarIdentificadores(pagina, limpio);
   revisarFormularios(pagina, limpio);
   revisarEnlaces(pagina, limpio, conjunto);
+  revisarSEO(pagina, html, vistos);
 }
 
 if (avisos.length) {

@@ -15,10 +15,20 @@
 export const CONFIG = {
   /* --- Identidad ---------------------------------------------------------- */
   marca: 'La Bodega de Sara',
-  dominio: 'https://labodegadesara.com', // cambiar al dominio definitivo
+  // Dominio definitivo. De aquí salen las direcciones canónicas, el sitemap y
+  // los datos estructurados, así que cambiarlo aquí lo cambia en toda la web.
+  dominio: 'https://labodegadesara.com',
 
-  /* --- Contacto ----------------------------------------------------------- */
-  // El email se monta por partes para que los bots no lo rastreen en el HTML.
+  /* --- Contacto -----------------------------------------------------------
+     El correo se monta por partes y lo escribe el navegador, para no dejarlo
+     en el HTML visible al alcance de los rastreadores de spam.
+
+     Ojo: sí aparece en claro dentro de los datos estructurados, porque el
+     dato de contacto es una señal importante en el posicionamiento local y
+     tiene que coincidir con el de la ficha de Google Business. Es un
+     intercambio consciente: algo más de spam a cambio de visibilidad. Si
+     algún día molesta, se quita `email` de seo/paginas.js y se deja sólo en
+     el formulario.                                                          */
   emailUsuario: 'sara',
   emailDominio: 'vinosdulces.com',
   telefono: '+34622680905', // formato internacional sin espacios, ej. '+34600000000'

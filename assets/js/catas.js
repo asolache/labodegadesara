@@ -36,7 +36,7 @@ if (contenedores.length) {
           : vacioHTML(
               'Ahora mismo no hay catas con fecha',
               'Estoy preparando las próximas. Escríbeme y te aviso en cuanto abra plazas.',
-              '<a class="boton boton--principal" href="/contacto.html">Avísame</a>'
+              '<a class="boton boton--principal" href="/contacto/">Avísame</a>'
             );
         return;
       }

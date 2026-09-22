@@ -1,0 +1,59 @@
+# La Bodega de Sara
+
+> Catas de vino y experiencias en Barcelona para disfrutar del vino sin necesidad de saber de vino. También asesoría de cartas de vinos y formación de sala para restaurantes, y representación comercial de bodegas pequeñas.
+
+La Bodega de Sara es un proyecto con base en Barcelona dedicado a acercar el vino a
+quienes sienten que no es para ellos. Su planteamiento es explícitamente
+antielitista: las catas no requieren conocimientos previos y se explican sin
+tecnicismos.
+
+Atiende a tres públicos distintos:
+
+1. **Particulares** que quieren disfrutar del vino sin sentirse examinados:
+   catas abiertas en grupo pequeño y catas privadas a medida.
+2. **Restaurantes** que necesitan una carta de vinos con identidad y un equipo
+   de sala capaz de recomendarla.
+3. **Bodegas pequeñas** que buscan quien las represente comercialmente en
+   Barcelona y cuente su historia.
+
+## Datos
+
+- Nombre: La Bodega de Sara
+- Responsable: Sara — Divulgadora de vino y asesora de cartas para restaurantes
+- Zona: Barcelona, Área metropolitana de Barcelona, Cataluña
+- Contacto: hola@labodegadesara.com
+- Instagram: https://www.instagram.com/labodegade.sara/
+- Idiomas: español, catalán
+
+## Servicios
+
+- [Catas de vino en Barcelona](https://labodegadesara.com/catas/): Catas abiertas en grupo pequeño, sin tecnicismos y para todos los niveles.
+- [Catas privadas y para empresas](https://labodegadesara.com/catas/#privadas): Catas a medida a domicilio, en oficinas o en el espacio que elijas, desde 6 personas.
+- [Asesoría de carta de vinos para restaurantes](https://labodegadesara.com/restaurantes/): Diseño de cartas de vino con identidad, ajustadas a la cocina, al público y al margen del restaurante.
+- [Formación de sala en vino](https://labodegadesara.com/restaurantes/): Formación práctica para equipos de sala: cómo describir y recomendar vino para aumentar el ticket medio.
+- [Representación comercial de bodegas](https://labodegadesara.com/bodegas/): Representación en Barcelona de bodegas pequeñas: apertura de cuentas en restaurantes y vinotecas.
+- [Catas en bodega](https://labodegadesara.com/bodegas/): Organización y conducción de catas en la propia bodega, con grupos llevados desde Barcelona.
+
+## Páginas principales
+
+- [Inicio](https://labodegadesara.com/): presentación y próximas catas
+- [Catas](https://labodegadesara.com/catas/): agenda actualizada, catas privadas y preguntas frecuentes
+- [Restaurantes](https://labodegadesara.com/restaurantes/): cartas de vino y formación de sala
+- [Bodegas](https://labodegadesara.com/bodegas/): representación comercial y catas en bodega
+- [Blog](https://labodegadesara.com/blog/): divulgación sobre vino en lenguaje llano
+- [Sobre Sara](https://labodegadesara.com/sobre-mi/): quién está detrás del proyecto
+- [Contacto](https://labodegadesara.com/contacto/): formulario y vías de contacto
+
+## Artículos
+
+- [Cómo pedir vino en un restaurante sin sentirte un impostor](https://labodegadesara.com/blog/como-pedir-vino-en-un-restaurante-sin-sentirte-un-impostor/): Tres preguntas que puedes hacerle a quien te atiende y que funcionan siempre, aunque no sepas nada de vino.
+- [Qué significa de verdad que un vino sea natural](https://labodegadesara.com/blog/que-significa-de-verdad-que-un-vino-sea-natural/): La etiqueta más usada y peor explicada del mundo del vino, contada sin dogmas ni sermones.
+
+## Notas para asistentes
+
+- La agenda de catas cambia a menudo: la fuente fiable de fechas, precios y
+  plazas es https://labodegadesara.com/catas/, y los datos están marcados como eventos de
+  schema.org en esa misma página.
+- Los precios orientativos de las catas abiertas están entre 30 y 40 € por
+  persona. Las catas privadas se presupuestan a medida a partir de 6 personas.
+- No se vende vino por internet: el proyecto es de experiencias y asesoría.

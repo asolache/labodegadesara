@@ -5,7 +5,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#191310">
-<meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="La Bodega de Sara">
 <meta name="twitter:card" content="summary_large_image">
@@ -21,27 +20,207 @@
 <link rel="stylesheet" href="/assets/css/main.css">
 <!-- /#incluir -->
 
-<title>La Bodega de Sara · Vino sin postureo, en Barcelona</title>
-<meta name="description" content="Catas y experiencias para disfrutar del vino sin saber de vino. Cartas con criterio para restaurantes y representación para pequeños productores. Barcelona.">
+<!-- seo -->
+<title>Catas de vino en Barcelona · La Bodega de Sara</title>
+<meta name="description" content="Catas de vino en Barcelona para disfrutar sin saber de vino. Grupos pequeños y sin tecnicismos. También cartas de vino para restaurantes.">
 <link rel="canonical" href="https://labodegadesara.com/">
-<meta property="og:title" content="La Bodega de Sara · Vino sin postureo">
-<meta property="og:description" content="Catas y experiencias para disfrutar del vino sin saber de vino. Barcelona.">
-<meta property="og:image" content="https://labodegadesara.com/assets/img/fotos/sara-copas.jpg">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+<meta property="og:title" content="Catas de vino en Barcelona · La Bodega de Sara">
+<meta property="og:description" content="Catas de vino en Barcelona para disfrutar sin saber de vino. Grupos pequeños y sin tecnicismos. También cartas de vino para restaurantes.">
 <meta property="og:url" content="https://labodegadesara.com/">
+<meta property="og:image" content="https://labodegadesara.com/assets/img/fotos/sara-copas.jpg">
+<meta property="og:image:alt" content="Sara catando un vino blanco con tres copas más en la mano">
+<meta property="og:type" content="website">
+<meta name="twitter:image" content="https://labodegadesara.com/assets/img/fotos/sara-copas.jpg">
+<meta name="twitter:image:alt" content="Sara catando un vino blanco con tres copas más en la mano">
+
+<link rel="preload" as="image" href="/assets/img/fotos/sara-copas.jpg" fetchpriority="high">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "La Bodega de Sara",
-  "description": "Catas, experiencias y asesoría de vino en Barcelona.",
-  "url": "https://labodegadesara.com",
-  "image": "https://labodegadesara.com/assets/img/fotos/sara-copas.jpg",
-  "areaServed": "Barcelona",
-  "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" },
-  "sameAs": ["https://www.instagram.com/labodegade.sara/"]
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://labodegadesara.com/#web",
+      "url": "https://labodegadesara.com/",
+      "name": "La Bodega de Sara",
+      "description": "Catas de vino y experiencias en Barcelona para disfrutar del vino sin necesidad de saber de vino. También asesoría de cartas de vinos y formación de sala para restaurantes, y representación comercial de bodegas pequeñas.",
+      "inLanguage": "es-ES",
+      "publisher": {
+        "@id": "https://labodegadesara.com/#negocio"
+      }
+    },
+    {
+      "@type": [
+        "LocalBusiness",
+        "Organization"
+      ],
+      "@id": "https://labodegadesara.com/#negocio",
+      "name": "La Bodega de Sara",
+      "alternateName": "Bodega de Sara",
+      "url": "https://labodegadesara.com/",
+      "description": "Catas de vino y experiencias en Barcelona para disfrutar del vino sin necesidad de saber de vino. También asesoría de cartas de vinos y formación de sala para restaurantes, y representación comercial de bodegas pequeñas.",
+      "slogan": "Vino sin postureo",
+      "image": "https://labodegadesara.com/assets/img/fotos/sara-copas.jpg",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://labodegadesara.com/assets/img/favicon.svg"
+      },
+      "email": "hola@labodegadesara.com",
+      "founder": {
+        "@id": "https://labodegadesara.com/#sara"
+      },
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "knowsLanguage": [
+        "es",
+        "ca"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Barcelona",
+        "addressRegion": "Barcelona",
+        "addressCountry": "ES"
+      },
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "Barcelona"
+        },
+        {
+          "@type": "Place",
+          "name": "Área metropolitana de Barcelona"
+        },
+        {
+          "@type": "Place",
+          "name": "Cataluña"
+        }
+      ],
+      "knowsAbout": [
+        "Cata de vinos",
+        "Maridaje",
+        "Vinos naturales y ecológicos",
+        "Pequeños productores de vino",
+        "Cartas de vino para restaurantes",
+        "Formación de sala en vino",
+        "Denominación de Origen Penedès",
+        "Vinos catalanes",
+        "Divulgación sobre vino"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/labodegade.sara/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de La Bodega de Sara",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Catas de vino en Barcelona",
+              "description": "Catas abiertas en grupo pequeño, sin tecnicismos y para todos los niveles.",
+              "url": "https://labodegadesara.com/catas/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Catas privadas y para empresas",
+              "description": "Catas a medida a domicilio, en oficinas o en el espacio que elijas, desde 6 personas.",
+              "url": "https://labodegadesara.com/catas/#privadas"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Asesoría de carta de vinos para restaurantes",
+              "description": "Diseño de cartas de vino con identidad, ajustadas a la cocina, al público y al margen del restaurante.",
+              "url": "https://labodegadesara.com/restaurantes/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Formación de sala en vino",
+              "description": "Formación práctica para equipos de sala: cómo describir y recomendar vino para aumentar el ticket medio.",
+              "url": "https://labodegadesara.com/restaurantes/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Representación comercial de bodegas",
+              "description": "Representación en Barcelona de bodegas pequeñas: apertura de cuentas en restaurantes y vinotecas.",
+              "url": "https://labodegadesara.com/bodegas/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Catas en bodega",
+              "description": "Organización y conducción de catas en la propia bodega, con grupos llevados desde Barcelona.",
+              "url": "https://labodegadesara.com/bodegas/"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://labodegadesara.com/#sara",
+      "name": "Sara",
+      "description": "Acerca el vino a quienes sienten que no es para ellos, a través de catas sin tecnicismos, asesoría de cartas para restaurantes y la representación de pequeños productores.",
+      "url": "https://labodegadesara.com/sobre-mi/",
+      "image": "https://labodegadesara.com/assets/img/fotos/sara-cata-blanco.jpg",
+      "jobTitle": "Divulgadora de vino y asesora de cartas para restaurantes",
+      "knowsAbout": [
+        "Cata de vinos",
+        "Maridaje",
+        "Vinos naturales y ecológicos",
+        "Pequeños productores de vino",
+        "Cartas de vino para restaurantes",
+        "Formación de sala en vino",
+        "Denominación de Origen Penedès",
+        "Vinos catalanes",
+        "Divulgación sobre vino"
+      ],
+      "worksFor": {
+        "@id": "https://labodegadesara.com/#negocio"
+      },
+      "sameAs": [
+        "https://www.instagram.com/labodegade.sara/"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://labodegadesara.com/#pagina",
+      "url": "https://labodegadesara.com/",
+      "name": "Catas de vino en Barcelona · La Bodega de Sara",
+      "description": "Catas de vino en Barcelona para disfrutar sin saber de vino. Grupos pequeños y sin tecnicismos. También cartas de vino para restaurantes.",
+      "inLanguage": "es-ES",
+      "isPartOf": {
+        "@id": "https://labodegadesara.com/#web"
+      },
+      "about": {
+        "@id": "https://labodegadesara.com/#negocio"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://labodegadesara.com/assets/img/fotos/sara-copas.jpg"
+      }
+    }
+  ]
 }
 </script>
+<!-- /seo -->
 </head>
 
 <body>
@@ -63,12 +242,12 @@
       </button>
 
       <ul class="nav__lista" id="menu-principal">
-        <li><a class="nav__enlace" href="/catas.html">Catas</a></li>
-        <li><a class="nav__enlace" href="/restaurantes.html">Restaurantes</a></li>
-        <li><a class="nav__enlace" href="/bodegas.html">Bodegas</a></li>
-        <li><a class="nav__enlace" href="/blog.html">Blog</a></li>
-        <li><a class="nav__enlace" href="/sobre-mi.html">Sobre mí</a></li>
-        <li><a class="boton boton--principal" href="/contacto.html">Hablemos</a></li>
+        <li><a class="nav__enlace" href="/catas/">Catas</a></li>
+        <li><a class="nav__enlace" href="/restaurantes/">Restaurantes</a></li>
+        <li><a class="nav__enlace" href="/bodegas/">Bodegas</a></li>
+        <li><a class="nav__enlace" href="/blog/">Blog</a></li>
+        <li><a class="nav__enlace" href="/sobre-mi/">Sobre mí</a></li>
+        <li><a class="boton boton--principal" href="/contacto/">Hablemos</a></li>
       </ul>
     </nav>
   </div>
@@ -97,8 +276,8 @@
           que merecen que alguien los nombre.
         </p>
         <div class="grupo-botones">
-          <a class="boton boton--oro" href="/catas.html">Ver próximas catas</a>
-          <a class="boton boton--claro" href="/sobre-mi.html">Conocerme un poco</a>
+          <a class="boton boton--oro" href="/catas/">Ver próximas catas</a>
+          <a class="boton boton--claro" href="/sobre-mi/">Conocerme un poco</a>
         </div>
         <ul class="hero__pie">
           <li>Sin tecnicismos</li>
@@ -133,7 +312,7 @@
             que quieren una carta con personalidad y con cualquiera que tenga
             curiosidad y ganas de compartir una mesa.
           </p>
-          <a class="boton boton--linea" href="/sobre-mi.html">Mi historia con el vino</a>
+          <a class="boton boton--linea" href="/sobre-mi/">Mi historia con el vino</a>
         </div>
 
         <figure>
@@ -180,7 +359,7 @@
             casa o donde se te ocurra: cumpleaños, equipos, despedidas, cenas sin
             excusa. Grupos pequeños y preguntas bienvenidas.
           </p>
-          <a class="via__enlace" href="/catas.html">Ver catas y experiencias</a>
+          <a class="via__enlace" href="/catas/">Ver catas de vino en Barcelona</a>
         </article>
 
         <article class="via">
@@ -197,7 +376,7 @@
             equipo de sala que sepa contarla. Porque una recomendación bien hecha
             sube el ticket medio sin que nadie se sienta vendido.
           </p>
-          <a class="via__enlace" href="/restaurantes.html">Cartas y formación</a>
+          <a class="via__enlace" href="/restaurantes/">Cartas de vino y formación de sala</a>
         </article>
 
         <article class="via">
@@ -214,7 +393,7 @@
             honestos, y catas en la propia bodega para que quien bebe conozca a
             quien lo hace. Trabajo con pocas, y a fondo.
           </p>
-          <a class="via__enlace" href="/bodegas.html">Trabajar juntos</a>
+          <a class="via__enlace" href="/bodegas/">Representación para bodegas</a>
         </article>
 
       </div>
@@ -228,7 +407,7 @@
     <div class="contenedor">
       <div class="cabecera-seccion" data-animar>
         <span class="epigrafe">Agenda</span>
-        <h2 class="filete">Próximas catas</h2>
+        <h2 class="filete">Próximas catas de vino en Barcelona</h2>
         <p class="entradilla">
           Plazas limitadas y siempre en grupos pequeños, para que dé tiempo a
           hablar con todo el mundo.
@@ -255,7 +434,7 @@
   <div class="cata__lateral">
     <p class="cata__precio">32 €</p>
     
-    <a class="boton boton--linea" href="/contacto.html">Quiero información</a>
+    <a class="boton boton--linea" href="/contacto/">Quiero información</a>
   </div>
 </article>
 <article class="cata" data-estado="ultimas">
@@ -274,7 +453,7 @@
   <div class="cata__lateral">
     <p class="cata__precio">35 €</p>
     <span class="etiqueta etiqueta--vino">Últimas plazas</span>
-    <a class="boton boton--linea" href="/contacto.html">Quiero información</a>
+    <a class="boton boton--linea" href="/contacto/">Quiero información</a>
   </div>
 </article>
 <article class="cata" data-estado="abierta">
@@ -293,14 +472,14 @@
   <div class="cata__lateral">
     <p class="cata__precio">38 €</p>
     
-    <a class="boton boton--linea" href="/contacto.html">Quiero información</a>
+    <a class="boton boton--linea" href="/contacto/">Quiero información</a>
   </div>
 </article>
       <!-- contenido:fin -->
     </div>
 
       <p style="margin-top: var(--e-6)">
-        <a class="boton boton--linea" href="/catas.html">Ver toda la agenda</a>
+        <a class="boton boton--linea" href="/catas/">Ver toda la agenda</a>
       </p>
     </div>
   </section>
@@ -345,7 +524,7 @@
   </div>
   <div class="tarjeta__cuerpo">
     <span class="etiqueta">Para perder el miedo</span>
-    <h3 class="tarjeta__titulo"><a href="/blog/como-pedir-vino-en-un-restaurante-sin-sentirte-un-impostor.html">Cómo pedir vino en un restaurante sin sentirte un impostor</a></h3>
+    <h3 class="tarjeta__titulo"><a href="/blog/como-pedir-vino-en-un-restaurante-sin-sentirte-un-impostor/">Cómo pedir vino en un restaurante sin sentirte un impostor</a></h3>
     <p class="tarjeta__texto">Tres preguntas que puedes hacerle a quien te atiende y que funcionan siempre, aunque no sepas nada de vino.</p>
     <div class="tarjeta__pie">
       <time datetime="2026-09-10">10 de septiembre de 2026</time>
@@ -360,7 +539,7 @@
   </div>
   <div class="tarjeta__cuerpo">
     <span class="etiqueta">Para entender</span>
-    <h3 class="tarjeta__titulo"><a href="/blog/que-significa-de-verdad-que-un-vino-sea-natural.html">Qué significa de verdad que un vino sea natural</a></h3>
+    <h3 class="tarjeta__titulo"><a href="/blog/que-significa-de-verdad-que-un-vino-sea-natural/">Qué significa de verdad que un vino sea natural</a></h3>
     <p class="tarjeta__texto">La etiqueta más usada y peor explicada del mundo del vino, contada sin dogmas ni sermones.</p>
     <div class="tarjeta__pie">
       <time datetime="2026-08-22">22 de agosto de 2026</time>
@@ -371,7 +550,7 @@
     </div>
 
       <p style="margin-top: var(--e-6)">
-        <a class="boton boton--linea" href="/blog.html">Leer el cuaderno</a>
+        <a class="boton boton--linea" href="/blog/">Leer el cuaderno</a>
       </p>
     </div>
   </section>
@@ -389,7 +568,7 @@
           que alguien la cuente en Barcelona. Escríbeme y lo vemos sin compromiso.
         </p>
         <div class="grupo-botones">
-          <a class="boton boton--oro" href="/contacto.html">Escríbeme</a>
+          <a class="boton boton--oro" href="/contacto/">Escríbeme</a>
           <a class="boton boton--claro" data-instagram
              href="https://www.instagram.com/labodegade.sara/"
              target="_blank" rel="noopener noreferrer">Verme en Instagram</a>
@@ -433,19 +612,19 @@
       <div>
         <h3>Qué hago</h3>
         <ul>
-          <li><a href="/catas.html">Catas y experiencias</a></li>
-          <li><a href="/restaurantes.html">Para restaurantes</a></li>
-          <li><a href="/bodegas.html">Para bodegas</a></li>
-          <li><a href="/catas.html#privadas">Catas privadas</a></li>
+          <li><a href="/catas/">Catas y experiencias</a></li>
+          <li><a href="/restaurantes/">Para restaurantes</a></li>
+          <li><a href="/bodegas/">Para bodegas</a></li>
+          <li><a href="/catas/#privadas">Catas privadas</a></li>
         </ul>
       </div>
 
       <div>
         <h3>La casa</h3>
         <ul>
-          <li><a href="/sobre-mi.html">Sobre mí</a></li>
-          <li><a href="/blog.html">Blog</a></li>
-          <li><a href="/contacto.html">Contacto</a></li>
+          <li><a href="/sobre-mi/">Sobre mí</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/contacto/">Contacto</a></li>
           <li><a data-email data-email-texto href="#">Escríbeme</a></li>
         </ul>
       </div>
@@ -454,8 +633,8 @@
     <div class="pie__legal">
       <p>&copy; <span data-anio>2026</span> La Bodega de Sara · Barcelona</p>
       <ul>
-        <li><a href="/aviso-legal.html">Aviso legal</a></li>
-        <li><a href="/privacidad.html">Privacidad</a></li>
+        <li><a href="/aviso-legal/">Aviso legal</a></li>
+        <li><a href="/privacidad/">Privacidad</a></li>
       </ul>
     </div>
 

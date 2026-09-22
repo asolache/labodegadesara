@@ -1,0 +1,119 @@
+# Configuración de publicación.
+# Vale para Netlify. Si se aloja en otro sitio, las equivalencias están en
+# docs/OPERATIVA-CONTENIDOS.md.
+
+[build]
+  publish = "."
+  # No hay compilación: lo que está en el repositorio es lo que se sirve.
+  command = ""
+
+# ---------------------------------------------------------------------------
+# Cabeceras
+# ---------------------------------------------------------------------------
+
+# Las páginas se revalidan siempre: cuando Sara publica una cata, tiene que
+# verse enseguida.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+
+# Los recursos estáticos no cambian de nombre, así que se cachean un día.
+# Al tocar el CSS conviene subir la versión en los enlaces o purgar la caché.
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Las fotos sí son inmutables: si cambia una, cambia su nombre.
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Ficheros pensados para máquinas.
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/rss.xml"
+  [headers.values]
+    Content-Type = "application/rss+xml; charset=utf-8"
+
+# ---------------------------------------------------------------------------
+# Redirecciones
+# ---------------------------------------------------------------------------
+# Una sola dirección por página. Si la misma página responde en varias
+# direcciones, Google reparte la autoridad entre ellas en lugar de sumarla.
+
+# Las direcciones antiguas con .html, por si alguna quedó enlazada por ahí.
+[[redirects]]
+  from = "/catas.html"
+  to = "/catas/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/restaurantes.html"
+  to = "/restaurantes/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/bodegas.html"
+  to = "/bodegas/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/blog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sobre-mi.html"
+  to = "/sobre-mi/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contacto.html"
+  to = "/contacto/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/:slug.html"
+  to = "/blog/:slug/"
+  status = 301
+  force = true
+
+# Las carpetas de trabajo no se publican.
+[[redirects]]
+  from = "/parciales/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/seo/*"
+  to = "/404.html"
+  status = 404

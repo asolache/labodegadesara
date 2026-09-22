@@ -30,8 +30,11 @@ No hay `npm install`. Sólo hace falta Node 18 o superior.
 ## Estructura
 
 ```
-├── *.html                  Páginas. El contenido dinámico se escribe aquí
-├── blog/                   Una página por artículo (generada)
+├── index.html              Portada
+├── catas/ restaurantes/    Una carpeta por página, para direcciones limpias
+│   bodegas/ blog/ …        (/catas/ en lugar de /catas.html)
+├── blog/<slug>/            Una carpeta por artículo (generada)
+├── seo/                    ← toda la estrategia de posicionamiento
 ├── parciales/              Cabecera, pie, head y plantilla de artículo
 ├── data/                   Contenido sincronizado desde Google (generado)
 ├── assets/
@@ -51,6 +54,7 @@ No hay `npm install`. Sólo hace falta Node 18 o superior.
 | [Manual de Sara](docs/MANUAL-SARA.md) | Para Sara. Cómo publicar catas y artículos |
 | [Operativa de contenidos](docs/OPERATIVA-CONTENIDOS.md) | Montaje de Google Sheets y Docs, publicación, alojamiento |
 | [Propuesta de diseño](docs/PROPUESTA-DISENO.md) | Decisiones de marca, arquitectura y accesibilidad |
+| [SEO y visibilidad](docs/SEO.md) | Palabras clave, datos estructurados y optimización para IA |
 
 ## Cómo llega el contenido a la web
 
@@ -70,8 +74,10 @@ dominio y modo del formulario de contacto. Está comentado paso a paso.
 
 ## Antes de publicar
 
-- [ ] Datos fiscales en `aviso-legal.html` y `privacidad.html`
+- [ ] Datos fiscales en `aviso-legal/index.html` y `privacidad/index.html`
 - [ ] Correo y dominio reales en `config.js`
 - [ ] Enlaces de las hojas de Google en `config.js`
 - [ ] Sustituir las catas y artículos de ejemplo
 - [ ] `node scripts/comprobar.mjs` sin errores
+- [ ] Ficha de Google Business dada de alta (ver `docs/SEO.md`)
+- [ ] Sitemap enviado a Google Search Console

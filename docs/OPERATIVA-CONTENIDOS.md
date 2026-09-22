@@ -15,8 +15,8 @@ técnica; el de Sara es [MANUAL-SARA.md](MANUAL-SARA.md).
    Google Sheets ─┐
      · Catas      │
      · Blog       ├──► scripts/sync.mjs ──► /data/*.json ──► HTML estático
-                  │      (GitHub Action)    /blog/*.html      en el alojamiento
-   Google Docs ───┘                         sitemap · rss
+                  │      (GitHub Action)    /blog/<slug>/     en el alojamiento
+   Google Docs ───┘                     sitemap · rss · llms.txt
      · artículos
 ```
 
@@ -173,7 +173,7 @@ En `config.js`, `formulario.modo` admite tres valores:
 Para Formspree: crea el formulario, copia el endpoint y ponlo en
 `formulario.endpoint`, con `modo: 'formspree'`.
 
-Para Netlify hay que añadir además, en el `<form>` de `contacto.html`:
+Para Netlify hay que añadir además, en el `<form>` de `contacto/index.html`:
 
 ```html
 <form data-formulario name="contacto" method="POST"
@@ -213,10 +213,10 @@ sitemap y los datos estructurados.
 
 ### Pendiente de rellenar
 
-- [ ] Datos fiscales en `aviso-legal.html` y `privacidad.html` (están marcados
+- [ ] Datos fiscales en `aviso-legal/index.html` y `privacidad/index.html` (están marcados
       con `[NOMBRE Y APELLIDOS DE SARA]`, `[NIF]`, `[DIRECCIÓN FISCAL]`).
 - [ ] Correo real en `config.js` (`emailUsuario` y `emailDominio`).
 - [ ] Dominio definitivo en `config.js`.
-- [ ] Validar con Sara el caso de La Teresita de `restaurantes.html`, y las
+- [ ] Validar con Sara el caso de La Teresita de `restaurantes/index.html`, y las
       condiciones de cancelación del aviso legal.
 - [ ] Sustituir las catas y artículos de ejemplo por los reales.

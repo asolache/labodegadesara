@@ -93,7 +93,7 @@ Inicio ─── Catas ──────── B2C · experiencias públicas y 
 puertas de entrada, enseña las próximas catas y deja ir. Cada visitante llega
 buscando cosas muy distintas y lo que necesita es identificarse rápido.
 
-Los botones de las páginas B2B llevan a `contacto.html?motivo=restaurante`, y el
+Los botones de las páginas B2B llevan a `/contacto/?motivo=restaurante`, y el
 formulario aparece con ese motivo ya elegido. Un paso menos, que en un
 formulario es mucho.
 

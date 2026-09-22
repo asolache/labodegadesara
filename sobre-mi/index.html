@@ -21,17 +21,19 @@
 <!-- /#incluir -->
 
 <!-- seo -->
-<title>Página no encontrada · La Bodega de Sara</title>
-<meta name="description" content="La página que buscabas no existe.">
-<link rel="canonical" href="https://labodegadesara.com/404.html">
-<meta name="robots" content="noindex, follow">
+<title>Sobre mí · Sara, de La Bodega de Sara</title>
+<meta name="description" content="Soy Sara y acerco el vino a quien siente que no es para él: catas sin postureo, cartas con identidad y pequeños productores con nombre.">
+<link rel="canonical" href="https://labodegadesara.com/sobre-mi/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-<meta property="og:title" content="Página no encontrada · La Bodega de Sara">
-<meta property="og:description" content="La página que buscabas no existe.">
-<meta property="og:url" content="https://labodegadesara.com/404.html">
-<meta property="og:image" content="https://labodegadesara.com/assets/img/fotos/sara-copas.jpg">
+<meta property="og:title" content="Sobre mí · Sara, de La Bodega de Sara">
+<meta property="og:description" content="Soy Sara y acerco el vino a quien siente que no es para él: catas sin postureo, cartas con identidad y pequeños productores con nombre.">
+<meta property="og:url" content="https://labodegadesara.com/sobre-mi/">
+<meta property="og:image" content="https://labodegadesara.com/assets/img/fotos/sara-cata-blanco.jpg">
+<meta property="og:image:alt" content="Sara oliendo una copa de vino blanco, de perfil, con luz cálida">
 <meta property="og:type" content="website">
-<meta name="twitter:image" content="https://labodegadesara.com/assets/img/fotos/sara-copas.jpg">
+<meta name="twitter:image" content="https://labodegadesara.com/assets/img/fotos/sara-cata-blanco.jpg">
+<meta name="twitter:image:alt" content="Sara oliendo una copa de vino blanco, de perfil, con luz cálida">
 
 <script type="application/ld+json">
 {
@@ -196,18 +198,43 @@
       ]
     },
     {
-      "@type": "WebPage",
-      "@id": "https://labodegadesara.com/404.html#pagina",
-      "url": "https://labodegadesara.com/404.html",
-      "name": "Página no encontrada · La Bodega de Sara",
-      "description": "La página que buscabas no existe.",
+      "@type": "AboutPage",
+      "@id": "https://labodegadesara.com/sobre-mi/#pagina",
+      "url": "https://labodegadesara.com/sobre-mi/",
+      "name": "Sobre mí · Sara, de La Bodega de Sara",
+      "description": "Soy Sara y acerco el vino a quien siente que no es para él: catas sin postureo, cartas con identidad y pequeños productores con nombre.",
       "inLanguage": "es-ES",
       "isPartOf": {
         "@id": "https://labodegadesara.com/#web"
       },
       "about": {
         "@id": "https://labodegadesara.com/#negocio"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://labodegadesara.com/assets/img/fotos/sara-cata-blanco.jpg"
+      },
+      "breadcrumb": {
+        "@id": "https://labodegadesara.com/sobre-mi/#migas"
       }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://labodegadesara.com/sobre-mi/#migas",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://labodegadesara.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Sobre mí",
+          "item": "https://labodegadesara.com/sobre-mi/"
+        }
+      ]
     }
   ]
 }
@@ -247,20 +274,137 @@
 <!-- /#incluir -->
 
 <main id="contenido">
-  <section class="seccion" style="min-height: 60vh; display: grid; place-items: center">
-    <div class="contenedor centrado">
-      <span class="epigrafe">Error 404</span>
-      <h1 style="font-size: var(--t-2xl)">Aquí no hay nada servido</h1>
-      <p class="entradilla" style="margin: var(--e-5) auto var(--e-6)">
-        La página que buscabas se ha movido o nunca existió. Cosas que pasan.
-        ¿Empezamos otra vez por el principio?
+
+  <section class="cabecera-pagina">
+    <div class="contenedor">
+      <nav class="migas" aria-label="Migas de pan">
+        <ol>
+          <li><a href="/">Inicio</a></li>
+          <li aria-current="page">Sobre mí</li>
+        </ol>
+      </nav>
+      <span class="epigrafe">Hola, soy Sara</span>
+      <h1>Soy Sara y me dedico a quitarle solemnidad al vino</h1>
+      <p class="entradilla">
+        Y no por falta de respeto, sino justo por lo contrario: porque creo que
+        se disfruta mucho más cuando deja de parecer un examen.
       </p>
-      <div class="grupo-botones" style="justify-content: center">
-        <a class="boton boton--principal" href="/">Ir al inicio</a>
-        <a class="boton boton--linea" href="/catas/">Ver próximas catas</a>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="duo" data-animar>
+        <figure>
+          <div class="foto-marco foto-marco--alta">
+            <img src="/assets/img/fotos/sara-cata-blanco.jpg"
+                 alt="Sara oliendo una copa de vino blanco, de perfil, con luz cálida"
+                 width="1333" height="2000" loading="lazy" decoding="async">
+          </div>
+        </figure>
+
+        <div class="duo__texto">
+          <h2 class="filete">Lo que me mueve</h2>
+          <p>
+            Me he encontrado muchas veces la misma escena: alguien mira una carta
+            de vinos, se encoge un poco y dice «elige tú, que yo no entiendo».
+            Esa frase, dicha casi pidiendo perdón, es la que quiero que deje de
+            existir.
+          </p>
+          <p>
+            Porque para disfrutar de una botella no hace falta saber en qué suelo
+            creció la uva. Hace falta que alguien te la sirva, te cuente de dónde
+            viene y te deje decir si te gusta o no sin corregirte.
+          </p>
+          <p>
+            Eso es lo que hago: abro las puertas de mi casa —aunque esa casa sea
+            un restaurante, una bodega o el salón de alguien— y pongo el vino en
+            medio para que la gente hable.
+          </p>
+        </div>
       </div>
     </div>
   </section>
+
+  <section class="seccion seccion--osc">
+    <div class="contenedor">
+      <div class="cabecera-seccion centrado" data-animar>
+        <span class="epigrafe">Cómo trabajo</span>
+        <h2 class="filete">Cinco cosas que no negocio</h2>
+      </div>
+
+      <div class="rejilla rejilla--3" data-animar>
+        <article class="paso">
+          <span class="paso__num">01</span>
+          <h3>Cercanía</h3>
+          <p>El vino no necesita un lenguaje complicado para disfrutarse.</p>
+        </article>
+        <article class="paso">
+          <span class="paso__num">02</span>
+          <h3>Autenticidad</h3>
+          <p>Trabajo con personas y proyectos honestos, aunque sean pequeños.</p>
+        </article>
+        <article class="paso">
+          <span class="paso__num">03</span>
+          <h3>Curiosidad</h3>
+          <p>Cada vino es la puerta a un territorio y a una forma de vivir.</p>
+        </article>
+        <article class="paso">
+          <span class="paso__num">04</span>
+          <h3>Compartir</h3>
+          <p>Una botella sola no es nada. Alrededor de una mesa, lo es todo.</p>
+        </article>
+        <article class="paso">
+          <span class="paso__num">05</span>
+          <h3>Respeto</h3>
+          <p>Por la tierra, por quien la trabaja y por el ritmo de cada proyecto.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="duo duo--invertido" data-animar>
+        <div class="duo__texto">
+          <span class="epigrafe">El día a día</span>
+          <h2 class="filete">Estudio mucho para que tú no tengas que hacerlo</h2>
+          <p>
+            Buena parte de mi trabajo pasa lejos de las copas: leyendo, tomando
+            notas, visitando viñedos y preguntando cosas a gente que lleva toda
+            la vida haciendo vino.
+          </p>
+          <p>
+            Todo eso lo mastico y lo devuelvo en forma de historia. Tú no tienes
+            que memorizar nada; sólo venir con ganas y elegir qué copa te apetece
+            repetir.
+          </p>
+          <div class="grupo-botones">
+            <a class="boton boton--principal" href="/catas/">Ver próximas catas</a>
+            <a class="boton boton--linea" href="/blog/">Leer el cuaderno</a>
+          </div>
+        </div>
+
+        <figure>
+          <div class="foto-marco foto-marco--alta">
+            <img src="/assets/img/fotos/sara-escribiendo.jpg"
+                 alt="Sara escribiendo notas a mano rodeada de libros de vino"
+                 width="1333" height="2000" loading="lazy" decoding="async">
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor">
+      <blockquote class="cita" data-animar>
+        <p>«Acercar el vino a quienes sienten que no es para ellos.»</p>
+        <footer>Por esto existe La Bodega de Sara</footer>
+      </blockquote>
+    </div>
+  </section>
+
 </main>
 
 <!-- #incluir pie -->

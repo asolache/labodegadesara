@@ -1,4 +1,43 @@
+# robots.txt · La Bodega de Sara
+# Buscadores y asistentes de IA son bienvenidos: esta web existe para que
+# la encuentren. Ver /llms.txt para un resumen legible por máquinas.
+
 User-agent: *
 Allow: /
+
+# Rastreadores de asistentes de IA (permitidos a propósito)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Nada que rastrear aquí: son ficheros de trabajo, no contenido.
+User-agent: *
+Disallow: /parciales/
+Disallow: /scripts/
+Disallow: /seo/
+Disallow: /docs/
 
 Sitemap: https://labodegadesara.com/sitemap.xml

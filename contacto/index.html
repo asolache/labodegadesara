@@ -21,17 +21,19 @@
 <!-- /#incluir -->
 
 <!-- seo -->
-<title>Página no encontrada · La Bodega de Sara</title>
-<meta name="description" content="La página que buscabas no existe.">
-<link rel="canonical" href="https://labodegadesara.com/404.html">
-<meta name="robots" content="noindex, follow">
+<title>Contacto · Catas y asesoría de vino en Barcelona</title>
+<meta name="description" content="Escríbeme para una cata privada, la carta de vinos de tu restaurante o para presentarme tu bodega. Respuesta en 24 o 48 horas.">
+<link rel="canonical" href="https://labodegadesara.com/contacto/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-<meta property="og:title" content="Página no encontrada · La Bodega de Sara">
-<meta property="og:description" content="La página que buscabas no existe.">
-<meta property="og:url" content="https://labodegadesara.com/404.html">
+<meta property="og:title" content="Contacto · Catas y asesoría de vino en Barcelona">
+<meta property="og:description" content="Escríbeme para una cata privada, la carta de vinos de tu restaurante o para presentarme tu bodega. Respuesta en 24 o 48 horas.">
+<meta property="og:url" content="https://labodegadesara.com/contacto/">
 <meta property="og:image" content="https://labodegadesara.com/assets/img/fotos/sara-copas.jpg">
+<meta property="og:image:alt" content="Sara catando un vino blanco">
 <meta property="og:type" content="website">
 <meta name="twitter:image" content="https://labodegadesara.com/assets/img/fotos/sara-copas.jpg">
+<meta name="twitter:image:alt" content="Sara catando un vino blanco">
 
 <script type="application/ld+json">
 {
@@ -196,18 +198,43 @@
       ]
     },
     {
-      "@type": "WebPage",
-      "@id": "https://labodegadesara.com/404.html#pagina",
-      "url": "https://labodegadesara.com/404.html",
-      "name": "Página no encontrada · La Bodega de Sara",
-      "description": "La página que buscabas no existe.",
+      "@type": "ContactPage",
+      "@id": "https://labodegadesara.com/contacto/#pagina",
+      "url": "https://labodegadesara.com/contacto/",
+      "name": "Contacto · Catas y asesoría de vino en Barcelona",
+      "description": "Escríbeme para una cata privada, la carta de vinos de tu restaurante o para presentarme tu bodega. Respuesta en 24 o 48 horas.",
       "inLanguage": "es-ES",
       "isPartOf": {
         "@id": "https://labodegadesara.com/#web"
       },
       "about": {
         "@id": "https://labodegadesara.com/#negocio"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://labodegadesara.com/assets/img/fotos/sara-copas.jpg"
+      },
+      "breadcrumb": {
+        "@id": "https://labodegadesara.com/contacto/#migas"
       }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://labodegadesara.com/contacto/#migas",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://labodegadesara.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contacto",
+          "item": "https://labodegadesara.com/contacto/"
+        }
+      ]
     }
   ]
 }
@@ -247,20 +274,136 @@
 <!-- /#incluir -->
 
 <main id="contenido">
-  <section class="seccion" style="min-height: 60vh; display: grid; place-items: center">
-    <div class="contenedor centrado">
-      <span class="epigrafe">Error 404</span>
-      <h1 style="font-size: var(--t-2xl)">Aquí no hay nada servido</h1>
-      <p class="entradilla" style="margin: var(--e-5) auto var(--e-6)">
-        La página que buscabas se ha movido o nunca existió. Cosas que pasan.
-        ¿Empezamos otra vez por el principio?
+
+  <section class="cabecera-pagina">
+    <div class="contenedor">
+      <nav class="migas" aria-label="Migas de pan">
+        <ol>
+          <li><a href="/">Inicio</a></li>
+          <li aria-current="page">Contacto</li>
+        </ol>
+      </nav>
+      <span class="epigrafe">Hablemos</span>
+      <h1>Cuéntame qué tienes en la cabeza</h1>
+      <p class="entradilla">
+        No hace falta que lo tengas todo claro. Con que me digas más o menos qué
+        te apetece, ya lo vamos dando forma entre los dos.
       </p>
-      <div class="grupo-botones" style="justify-content: center">
-        <a class="boton boton--principal" href="/">Ir al inicio</a>
-        <a class="boton boton--linea" href="/catas/">Ver próximas catas</a>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="duo duo--arriba" data-animar>
+
+        <!-- ---------- Formulario ---------- -->
+        <div>
+          <h2 class="filete" style="margin-bottom: var(--e-6)">Escríbeme</h2>
+
+          <div class="aviso-form aviso-form--ok" data-aviso="ok" hidden>
+            <strong>¡Recibido!</strong> Te contesto en 24 o 48 horas, normalmente
+            antes. Si tienes prisa, escríbeme directamente por Instagram.
+          </div>
+
+          <div class="aviso-form aviso-form--error" data-aviso="error" hidden>
+            No he podido enviar el mensaje. Prueba otra vez o escríbeme
+            directamente a <a data-email data-email-texto href="#"></a>.
+          </div>
+
+          <form data-formulario novalidate>
+            <div class="campo">
+              <label for="nombre">Tu nombre</label>
+              <input type="text" id="nombre" name="nombre" required
+                     autocomplete="name" placeholder="Cómo te llamas">
+            </div>
+
+            <div class="campo">
+              <label for="correo">Tu correo</label>
+              <input type="email" id="correo" name="correo" required
+                     autocomplete="email" placeholder="para poder contestarte">
+            </div>
+
+            <div class="campo">
+              <label for="motivo">¿De qué va la cosa?</label>
+              <select id="motivo" name="motivo">
+                <option value="cata">Quiero apuntarme a una cata</option>
+                <option value="privada">Quiero montar una cata privada o un evento</option>
+                <option value="empresa">Es para mi empresa o equipo</option>
+                <option value="restaurante">Tengo un restaurante</option>
+                <option value="bodega">Tengo una bodega</option>
+                <option value="otro">Otra cosa</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label for="mensaje">
+                Cuéntame
+                <span class="ayuda">Fechas, número de personas, presupuesto… lo que sepas.</span>
+              </label>
+              <textarea id="mensaje" name="mensaje" required
+                        placeholder="Somos unos diez, nos gustaría algo un sábado por la tarde…"></textarea>
+            </div>
+
+            <!-- Campo trampa: las personas no lo ven, los robots sí lo rellenan -->
+            <div class="trampa" aria-hidden="true">
+              <label for="web">No rellenes este campo</label>
+              <input type="text" id="web" name="web" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="campo campo--check">
+              <input type="checkbox" id="privacidad" name="privacidad" required>
+              <label for="privacidad">
+                He leído y acepto la <a href="/privacidad/">política de privacidad</a>.
+                Usaré tus datos sólo para contestarte.
+              </label>
+            </div>
+
+            <button class="boton boton--principal boton--bloque" type="submit">
+              Enviar mensaje
+            </button>
+          </form>
+        </div>
+
+        <!-- ---------- Otras vías ---------- -->
+        <div class="duo__texto">
+          <div class="foto-marco" style="margin-bottom: var(--e-6)">
+            <img src="/assets/img/fotos/sara-copas.jpg"
+                 alt="Sara catando un vino blanco con otras copas en la mano"
+                 width="1333" height="2000" loading="lazy" decoding="async"
+                 style="aspect-ratio: 4/3; object-fit: cover; object-position: 50% 25%">
+          </div>
+
+          <h2 class="filete">Otras formas de encontrarme</h2>
+
+          <ul class="lista-marcas" style="margin-top: var(--e-5)">
+            <li>
+              <strong>Correo:</strong>
+              <a data-email data-email-texto href="#"></a>
+            </li>
+            <li>
+              <strong>Instagram:</strong>
+              <a data-instagram href="https://www.instagram.com/labodegade.sara/"
+                 target="_blank" rel="noopener noreferrer">@labodegade.sara</a>
+              — es donde más rápido contesto.
+            </li>
+            <li><strong>Dónde trabajo:</strong> Barcelona y alrededores. Para
+                catas en bodega, allá donde esté la viña.</li>
+            <li><strong>Cuánto tardo:</strong> entre 24 y 48 horas. Si es urgente,
+                dímelo en el asunto.</li>
+          </ul>
+
+          <div class="cta-final" style="margin-top: var(--e-7); text-align: left; justify-items: start">
+            <h2 style="font-size: var(--t-lg)">¿Buscas una fecha concreta?</h2>
+            <p>Echa un vistazo a la agenda antes de escribir: igual ya hay algo
+               que te encaja.</p>
+            <a class="boton boton--claro" href="/catas/">Ver próximas catas</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
+
 </main>
 
 <!-- #incluir pie -->
@@ -329,5 +472,6 @@
 <!-- /#incluir -->
 
 <script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="/assets/js/contacto.js"></script>
 </body>
 </html>

@@ -21,17 +21,19 @@
 <!-- /#incluir -->
 
 <!-- seo -->
-<title>Página no encontrada · La Bodega de Sara</title>
-<meta name="description" content="La página que buscabas no existe.">
-<link rel="canonical" href="https://labodegadesara.com/404.html">
-<meta name="robots" content="noindex, follow">
+<title>Blog de vino sin tecnicismos · La Bodega de Sara</title>
+<meta name="description" content="Artículos sobre vino en lenguaje normal: cómo pedir vino en un restaurante, qué es un vino natural y visitas a pequeñas bodegas.">
+<link rel="canonical" href="https://labodegadesara.com/blog/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-<meta property="og:title" content="Página no encontrada · La Bodega de Sara">
-<meta property="og:description" content="La página que buscabas no existe.">
-<meta property="og:url" content="https://labodegadesara.com/404.html">
-<meta property="og:image" content="https://labodegadesara.com/assets/img/fotos/sara-copas.jpg">
+<meta property="og:title" content="Blog de vino sin tecnicismos · La Bodega de Sara">
+<meta property="og:description" content="Artículos sobre vino en lenguaje normal: cómo pedir vino en un restaurante, qué es un vino natural y visitas a pequeñas bodegas.">
+<meta property="og:url" content="https://labodegadesara.com/blog/">
+<meta property="og:image" content="https://labodegadesara.com/assets/img/fotos/sara-escribiendo.jpg">
+<meta property="og:image:alt" content="Sara escribiendo notas a mano rodeada de libros de vino">
 <meta property="og:type" content="website">
-<meta name="twitter:image" content="https://labodegadesara.com/assets/img/fotos/sara-copas.jpg">
+<meta name="twitter:image" content="https://labodegadesara.com/assets/img/fotos/sara-escribiendo.jpg">
+<meta name="twitter:image:alt" content="Sara escribiendo notas a mano rodeada de libros de vino">
 
 <script type="application/ld+json">
 {
@@ -196,18 +198,62 @@
       ]
     },
     {
-      "@type": "WebPage",
-      "@id": "https://labodegadesara.com/404.html#pagina",
-      "url": "https://labodegadesara.com/404.html",
-      "name": "Página no encontrada · La Bodega de Sara",
-      "description": "La página que buscabas no existe.",
+      "@type": "Blog",
+      "@id": "https://labodegadesara.com/blog/#pagina",
+      "url": "https://labodegadesara.com/blog/",
+      "name": "Blog de vino sin tecnicismos · La Bodega de Sara",
+      "description": "Artículos sobre vino en lenguaje normal: cómo pedir vino en un restaurante, qué es un vino natural y visitas a pequeñas bodegas.",
       "inLanguage": "es-ES",
       "isPartOf": {
         "@id": "https://labodegadesara.com/#web"
       },
       "about": {
         "@id": "https://labodegadesara.com/#negocio"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://labodegadesara.com/assets/img/fotos/sara-escribiendo.jpg"
+      },
+      "breadcrumb": {
+        "@id": "https://labodegadesara.com/blog/#migas"
       }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://labodegadesara.com/blog/#migas",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://labodegadesara.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://labodegadesara.com/blog/"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://labodegadesara.com/blog/#lista",
+      "numberOfItems": 2,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://labodegadesara.com/blog/como-pedir-vino-en-un-restaurante-sin-sentirte-un-impostor/",
+          "name": "Cómo pedir vino en un restaurante sin sentirte un impostor"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://labodegadesara.com/blog/que-significa-de-verdad-que-un-vino-sea-natural/",
+          "name": "Qué significa de verdad que un vino sea natural"
+        }
+      ]
     }
   ]
 }
@@ -247,20 +293,77 @@
 <!-- /#incluir -->
 
 <main id="contenido">
-  <section class="seccion" style="min-height: 60vh; display: grid; place-items: center">
-    <div class="contenedor centrado">
-      <span class="epigrafe">Error 404</span>
-      <h1 style="font-size: var(--t-2xl)">Aquí no hay nada servido</h1>
-      <p class="entradilla" style="margin: var(--e-5) auto var(--e-6)">
-        La página que buscabas se ha movido o nunca existió. Cosas que pasan.
-        ¿Empezamos otra vez por el principio?
+
+  <section class="cabecera-pagina">
+    <div class="contenedor">
+      <nav class="migas" aria-label="Migas de pan">
+        <ol>
+          <li><a href="/">Inicio</a></li>
+          <li aria-current="page">Blog</li>
+        </ol>
+      </nav>
+      <span class="epigrafe">El cuaderno</span>
+      <h1>Vino contado en lenguaje normal</h1>
+      <p class="entradilla">
+        Bodegas que visito, preguntas que me hacéis una y otra vez, botellas que
+        me han sorprendido y alguna opinión que igual no gusta a todo el mundo.
       </p>
-      <div class="grupo-botones" style="justify-content: center">
-        <a class="boton boton--principal" href="/">Ir al inicio</a>
-        <a class="boton boton--linea" href="/catas/">Ver próximas catas</a>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="rejilla rejilla--3" data-blog data-nivel="2">
+      <!-- contenido:inicio -->
+<article class="tarjeta">
+  
+  <div class="tarjeta__media">
+    <img src="/assets/img/fotos/sara-corcho.jpg" alt="Sara oliendo un corcho"
+         loading="lazy" decoding="async" width="600" height="400">
+  </div>
+  <div class="tarjeta__cuerpo">
+    <span class="etiqueta">Para perder el miedo</span>
+    <h2 class="tarjeta__titulo"><a href="/blog/como-pedir-vino-en-un-restaurante-sin-sentirte-un-impostor/">Cómo pedir vino en un restaurante sin sentirte un impostor</a></h2>
+    <p class="tarjeta__texto">Tres preguntas que puedes hacerle a quien te atiende y que funcionan siempre, aunque no sepas nada de vino.</p>
+    <div class="tarjeta__pie">
+      <time datetime="2026-09-10">10 de septiembre de 2026</time>
+    </div>
+  </div>
+</article>
+<article class="tarjeta">
+  
+  <div class="tarjeta__media">
+    <img src="/assets/img/fotos/sara-cata-blanco.jpg" alt="Copa de vino blanco a contraluz"
+         loading="lazy" decoding="async" width="600" height="400">
+  </div>
+  <div class="tarjeta__cuerpo">
+    <span class="etiqueta">Para entender</span>
+    <h2 class="tarjeta__titulo"><a href="/blog/que-significa-de-verdad-que-un-vino-sea-natural/">Qué significa de verdad que un vino sea natural</a></h2>
+    <p class="tarjeta__texto">La etiqueta más usada y peor explicada del mundo del vino, contada sin dogmas ni sermones.</p>
+    <div class="tarjeta__pie">
+      <time datetime="2026-08-22">22 de agosto de 2026</time>
+    </div>
+  </div>
+</article>
+      <!-- contenido:fin -->
+    </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt">
+    <div class="contenedor">
+      <div class="cta-final" data-animar>
+        <span class="epigrafe">¿Te ha quedado alguna duda?</span>
+        <h2>Pregúntame lo que quieras</h2>
+        <p>
+          Si hay algo del mundo del vino que siempre has querido preguntar y te
+          ha dado apuro, escríbeme. Igual sale de ahí el próximo artículo.
+        </p>
+        <a class="boton boton--oro" href="/contacto/">Escríbeme</a>
       </div>
     </div>
   </section>
+
 </main>
 
 <!-- #incluir pie -->
@@ -329,5 +432,6 @@
 <!-- /#incluir -->
 
 <script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="/assets/js/blog.js"></script>
 </body>
 </html>

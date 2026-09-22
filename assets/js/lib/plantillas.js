@@ -51,7 +51,7 @@ export function catalHTML(cata) {
     : cata.reserva
       ? `<a class="boton boton--principal" href="${escapar(cata.reserva)}"
             target="_blank" rel="noopener noreferrer">Reservar plaza</a>`
-      : `<a class="boton boton--linea" href="/contacto.html">Quiero información</a>`;
+      : `<a class="boton boton--linea" href="/contacto/">Quiero información</a>`;
 
   return `
 <article class="cata" data-estado="${escapar(cata.estado)}">
@@ -96,7 +96,7 @@ export function formatearPrecio(precio) {
  */
 export function postHTML(post, { base = '/blog/', nivel = 3 } = {}) {
   const fecha = post.fecha ? new Date(post.fecha) : aFecha(post.fechaTexto);
-  const url = `${base}${post.slug}.html`;
+  const url = `${base}${post.slug}/`;
   const h = Math.min(6, Math.max(2, nivel));
 
   return `
@@ -136,22 +136,50 @@ export function eventoJSONLD(cata, dominio) {
   const fecha = cata.fecha ? new Date(cata.fecha) : aFecha(cata.fechaTexto, cata.hora);
   if (!fecha) return null;
 
+  // Una cata dura unas dos horas: declarar el final ayuda a que se muestre
+  // bien en los resultados y en los calendarios.
+  const fin = new Date(fecha.getTime() + 2 * 60 * 60 * 1000);
+
   const datos = {
-    '@context': 'https://schema.org',
     '@type': 'Event',
+    '@id': `${dominio}/catas/#${cata.id}`,
     name: cata.titulo,
     startDate: fecha.toISOString(),
+    endDate: fin.toISOString(),
     eventStatus: 'https://schema.org/EventScheduled',
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-    organizer: { '@type': 'Organization', name: 'La Bodega de Sara', url: dominio }
+    inLanguage: 'es-ES',
+    isAccessibleForFree: false,
+    url: `${dominio}/catas/`,
+    organizer: { '@id': `${dominio}/#negocio` },
+    performer: { '@id': `${dominio}/#sara` },
+    image: `${dominio}/assets/img/fotos/sara-cata-blanco.jpg`
   };
 
   if (cata.descripcion) datos.description = cata.descripcion;
+  if (cata.plazas) datos.maximumAttendeeCapacity = Number(cata.plazas) || undefined;
+
+  if (cata.publico) {
+    datos.audience = { '@type': 'Audience', audienceType: cata.publico };
+  }
 
   if (cata.lugar) {
     datos.location = {
       '@type': 'Place',
       name: cata.lugar,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: cata.ciudad || 'Barcelona',
+        addressRegion: 'Barcelona',
+        addressCountry: 'ES'
+      }
+    };
+  } else {
+    // Sin lugar concreto, al menos la ciudad: un evento sin location no es
+    // válido para Google y se queda fuera de los resultados enriquecidos.
+    datos.location = {
+      '@type': 'Place',
+      name: cata.ciudad || 'Barcelona',
       address: {
         '@type': 'PostalAddress',
         addressLocality: cata.ciudad || 'Barcelona',
@@ -169,9 +197,32 @@ export function eventoJSONLD(cata, dominio) {
       availability: cata.estado === 'agotado'
         ? 'https://schema.org/SoldOut'
         : 'https://schema.org/InStock',
-      url: cata.reserva || `${dominio}/catas.html`
+      url: cata.reserva || `${dominio}/catas/`,
+      validFrom: new Date().toISOString().slice(0, 10)
     };
   }
 
   return datos;
+}
+
+/**
+ * Preguntas frecuentes visibles.
+ *
+ * Se generan a partir de las mismas preguntas que se declaran en los datos
+ * estructurados de seo/paginas.js. Declarar un FAQPage cuyo contenido no está
+ * a la vista incumple las directrices de Google, así que la única forma de no
+ * equivocarse nunca es que ambos salgan de la misma fuente.
+ *
+ * @param {{pregunta: string, respuesta: string}[]} faq
+ * @param {boolean} [primeraAbierta] deja la primera desplegada
+ * @returns {string} HTML
+ */
+export function faqHTML(faq, primeraAbierta = false) {
+  if (!faq?.length) return '';
+
+  return faq.map((item, i) => `
+<details${primeraAbierta && i === 0 ? ' open' : ''}>
+  <summary>${escapar(item.pregunta)}</summary>
+  <p>${escapar(item.respuesta)}</p>
+</details>`.trim()).join('\n');
 }
