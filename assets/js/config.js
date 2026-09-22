@@ -19,9 +19,9 @@ export const CONFIG = {
 
   /* --- Contacto ----------------------------------------------------------- */
   // El email se monta por partes para que los bots no lo rastreen en el HTML.
-  emailUsuario: 'hola',
-  emailDominio: 'labodegadesara.com',
-  telefono: '', // formato internacional sin espacios, ej. '+34600000000'
+  emailUsuario: 'sara',
+  emailDominio: 'vinosdulces.com',
+  telefono: '+34622680905', // formato internacional sin espacios, ej. '+34600000000'
   instagram: 'https://www.instagram.com/labodegade.sara/',
   ciudad: 'Barcelona',
 
@@ -29,8 +29,8 @@ export const CONFIG = {
      Pega aquí las URLs CSV publicadas. Mientras estén vacías, la web usa los
      ficheros de /data/*.json que genera el sincronizador.                  */
   hojas: {
-    catas: '',   // pestaña "Catas"
-    blog: '',    // pestaña "Blog"
+    catas: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQPVDzNmtfSQ5TQX-v7raQkMGypVtY2kC9pLkd5aoiOyAx5f1ThOYz1SUC4fZ1UpXE5IxdVbmV6bMHm/pub?gid=1865165858&single=true&output=csv',   // pestaña "Catas"
+    blog: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQPVDzNmtfSQ5TQX-v7raQkMGypVtY2kC9pLkd5aoiOyAx5f1ThOYz1SUC4fZ1UpXE5IxdVbmV6bMHm/pub?gid=1159033443&single=true&output=csv',    // pestaña "Blog"
     textos: ''   // pestaña "Textos" (opcional: frases editables de la home)
   },
 
