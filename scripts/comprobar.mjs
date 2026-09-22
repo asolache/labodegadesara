@@ -335,6 +335,46 @@ function revisarSEO(fichero, html, vistos) {
 }
 
 /* ==========================================================================
+   Coherencia entre el listado y las páginas
+   ========================================================================== */
+
+/**
+ * Cada artículo listado tiene que tener su página publicada.
+ *
+ * Esta comprobación existe porque llegó a pasar lo contrario: el listado del
+ * blog mostraba artículos recién apuntados en la hoja de cálculo cuya página
+ * todavía no había generado el sincronizador, y al pinchar salía un 404.
+ */
+async function revisarArticulos() {
+  let posts;
+  try {
+    posts = JSON.parse(await readFile(ruta('data/blog.json'), 'utf8'));
+  } catch {
+    return;  // Sin artículos todavía: nada que comprobar.
+  }
+
+  for (const post of posts) {
+    const pagina = `blog/${post.slug}/index.html`;
+    if (!existsSync(ruta(pagina))) {
+      error('data/blog.json',
+        `el artículo «${post.titulo}» aparece en el listado pero no existe ` +
+        `su página ${pagina}. Ejecuta node scripts/sync.mjs`);
+    }
+  }
+
+  // Y al revés: una página huérfana es un artículo despublicado que se quedó.
+  if (existsSync(ruta('blog'))) {
+    const slugs = new Set(posts.map(p => p.slug));
+    for (const entrada of await readdir(ruta('blog'), { withFileTypes: true })) {
+      if (entrada.isDirectory() && !slugs.has(entrada.name)) {
+        aviso('blog/', `la carpeta ${entrada.name}/ no corresponde a ningún ` +
+                       'artículo del listado');
+      }
+    }
+  }
+}
+
+/* ==========================================================================
    Principal
    ========================================================================== */
 
@@ -378,6 +418,8 @@ for (const pagina of paginas) {
   revisarEnlaces(pagina, limpio, conjunto);
   revisarSEO(pagina, html, vistos);
 }
+
+await revisarArticulos();
 
 if (avisos.length) {
   console.log('\x1b[33mAvisos\x1b[0m');

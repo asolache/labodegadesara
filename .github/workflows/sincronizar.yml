@@ -11,11 +11,16 @@ on:
     - cron: '17 * * * *'   # cada hora, en el minuto 17
   workflow_dispatch:        # botón manual
   push:
-    branches: [main]
-    paths:
-      - 'scripts/**'
-      - 'parciales/**'
-      - 'assets/js/**'
+    # La rama por defecto del repositorio, sea cual sea su nombre. Sin esto,
+    # un repositorio cuya rama principal no se llame "main" no sincroniza
+    # nunca al subir cambios.
+    branches:
+      - main
+      - master
+      - 'claude/**'
+
+# El push que hace este flujo usa GITHUB_TOKEN, y GitHub no vuelve a disparar
+# flujos con esos commits, así que no hay riesgo de bucle.
 
 # Permite confirmar y subir los cambios del contenido.
 permissions:

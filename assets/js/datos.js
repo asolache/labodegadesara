@@ -1,20 +1,22 @@
 /**
  * Capa de datos del navegador.
  *
- * Estrategia en dos tiempos:
- *   1. Se pintan los datos de /data/*.json, que el sincronizador deja en el
- *      repositorio. Son instantáneos y los ven los buscadores.
- *   2. Si CONFIG.refrescoEnVivo está activo y hay una hoja publicada, se
- *      consulta además el Google Sheet y se vuelve a pintar si hay cambios.
- *      Así Sara ve lo que acaba de escribir sin esperar a la sincronización.
+ * Todo se sirve desde /data/*.json, que el sincronizador deja escrito en el
+ * repositorio: es instantáneo, lo ven los buscadores y funciona sin conexión
+ * con Google.
  *
- * Si el paso 2 falla (sin conexión, hoja despublicada), no pasa nada: la web
- * sigue mostrando lo del paso 1.
+ * Encima de eso, LAS CATAS admiten un refresco en vivo contra la hoja de
+ * cálculo (CONFIG.refrescoEnVivo), para que Sara vea al momento lo que acaba
+ * de escribir. Si ese refresco falla, no pasa nada: se queda lo del fichero.
+ *
+ * EL BLOG NO SE REFRESCA EN VIVO, a propósito. Un artículo necesita su propia
+ * página generada, y listarlo antes de que exista sólo produce enlaces rotos.
+ * La explicación larga está sobre cargarPosts().
  */
 
 import { CONFIG } from './config.js';
 import { csvAObjetos } from './lib/csv.js';
-import { normalizarCata, normalizarPost, ordenarCatas, ordenarPosts } from './lib/contenido.js';
+import { normalizarCata, ordenarCatas, ordenarPosts } from './lib/contenido.js';
 
 /* La raíz del sitio, calculada desde este módulo (assets/js/datos.js).
    Permite servir la web tanto en el dominio como en una subcarpeta. */
@@ -73,31 +75,25 @@ export async function cargarCatas(alActualizar) {
 
 /**
  * Artículos del blog.
- * Ojo: en vivo sólo llegan los cuerpos escritos directamente en la hoja. Los
- * que viven en un Google Doc los resuelve el sincronizador, así que para esos
- * manda siempre la versión del repositorio.
+ *
+ * A diferencia de las catas, el blog NO se refresca contra la hoja de cálculo.
+ *
+ * El motivo: cada artículo necesita su propia página en /blog/<slug>/, y esas
+ * páginas sólo existen después de que el sincronizador las genere. Si aquí se
+ * añadieran los artículos que Sara acaba de apuntar en la hoja, el listado
+ * mostraría enlaces a páginas que todavía no están publicadas, y quien
+ * pinchara se encontraría un error 404.
+ *
+ * Por eso el listado se sirve siempre desde /data/blog.json, que el
+ * sincronizador escribe en la misma pasada en que crea las páginas: lo que se
+ * lista y lo que se puede abrir van siempre a la par.
+ *
+ * Un artículo nuevo aparece, como mucho, una hora después de apuntarlo. Si hay
+ * prisa, se lanza la sincronización a mano desde la pestaña Actions de GitHub.
  */
 export async function cargarPosts(alActualizar) {
-  const locales = await leerJSONLocal(CONFIG.datosLocales.blog);
-  const entregado = JSON.stringify(locales);
-
-  alActualizar(ordenarPosts(locales));
-
-  if (!CONFIG.refrescoEnVivo || !CONFIG.hojas.blog) return;
-
-  const filas = await leerHoja(CONFIG.hojas.blog);
-  if (!filas) return;
-
-  // Sólo se añaden artículos nuevos que no dependan de un Google Doc.
-  const conocidos = new Set(locales.map(p => p.slug));
-  const nuevos = filas
-    .map(normalizarPost)
-    .filter(p => p && !conocidos.has(p.slug) && !p.documento && p.cuerpo);
-
-  if (nuevos.length) {
-    const combinados = ordenarPosts([...locales, ...nuevos]);
-    if (JSON.stringify(combinados) !== entregado) alActualizar(combinados);
-  }
+  const posts = await leerJSONLocal(CONFIG.datosLocales.blog);
+  alActualizar(ordenarPosts(posts));
 }
 
 /** Un artículo concreto por su dirección. */

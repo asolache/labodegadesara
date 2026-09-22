@@ -51,11 +51,16 @@ export const CONFIG = {
   },
 
   /**
-   * Refresco en vivo.
+   * Refresco en vivo de las CATAS.
+   *
    * true  → al abrir la web se consulta también el Google Sheet, de modo que
-   *         Sara ve sus cambios al instante sin esperar a la sincronización.
-   * false → sólo se usan los JSON del repositorio (más rápido y estable).
-   * Recomendado: true en catas (cambian a menudo), false si notas lentitud.
+   *         Sara ve sus cambios en la agenda al instante, sin esperar a la
+   *         sincronización.
+   * false → sólo se usan los JSON del repositorio (algo más rápido).
+   *
+   * No afecta al blog: cada artículo necesita su página generada, así que el
+   * listado se sirve siempre desde /data/blog.json para que no aparezcan
+   * enlaces a artículos que todavía no están publicados.
    */
   refrescoEnVivo: true,
 
