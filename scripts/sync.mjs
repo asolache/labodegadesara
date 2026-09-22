@@ -97,6 +97,47 @@ async function descargarDocumento(enlace) {
   return texto;
 }
 
+/**
+ * Limpia lo que Google añade al exportar y lo que sobra del documento.
+ *
+ * 1. Google Docs escribe el nombre de cada pestaña como encabezado ("Pestaña 1",
+ *    "Tab 1"). Es fontanería de la herramienta, no contenido del artículo.
+ * 2. Es habitual repetir el título dentro del documento. Como la plantilla ya
+ *    lo pone como h1 de la página, dejarlo otra vez lo duplica en la pantalla
+ *    y en los buscadores, así que se quita el primer encabezado si dice
+ *    prácticamente lo mismo que el título.
+ *
+ * @param {string} texto   markdown recién descargado
+ * @param {string} titulo  título del artículo, según la hoja
+ */
+function limpiarDocumento(texto, titulo) {
+  let lineas = String(texto).replace(/\r\n?/g, '\n').split('\n');
+
+  // 1 · Encabezados de pestaña de Google, estén donde estén.
+  lineas = lineas.filter(l =>
+    !/^#{1,6}\s*(pesta[ñn]a|tab)\s*\d*\s*$/i.test(l.trim()));
+
+  // 2 · Primer encabezado repetido. Se comparan sin acentos, signos ni
+  //     plurales sencillos, porque "Bienvenido" y "Bienvenidos" son lo mismo.
+  const normalizar = t => String(t)
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s]/g, '')
+    .replace(/s\b/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const primera = lineas.findIndex(l => l.trim() !== '');
+  if (primera !== -1) {
+    const encabezado = lineas[primera].trim().match(/^#{1,6}\s+(.*)$/);
+    if (encabezado && normalizar(encabezado[1]) === normalizar(titulo)) {
+      lineas.splice(primera, 1);
+    }
+  }
+
+  return lineas.join('\n').trim();
+}
+
 /* ==========================================================================
    1 · CATAS
    ========================================================================== */
@@ -156,7 +197,8 @@ async function sincronizarBlog() {
     // El cuerpo puede venir de un Google Doc.
     if (post.documento) {
       try {
-        post.cuerpo = await descargarDocumento(post.documento);
+        post.cuerpo = limpiarDocumento(
+          await descargarDocumento(post.documento), post.titulo);
         log.ok(`«${post.titulo}» — documento descargado`);
       } catch (error) {
         log.error(`«${post.titulo}»: ${error.message}`);
