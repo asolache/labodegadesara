@@ -64,6 +64,23 @@
 # Una sola dirección por página. Si la misma página responde en varias
 # direcciones, Google reparte la autoridad entre ellas en lugar de sumarla.
 
+# El subdominio de Netlify sigue sirviendo el sitio entero aunque se conecte el
+# dominio propio, así que se manda al dominio bueno. Sin esto habría dos webs
+# idénticas compitiendo entre ellas, y las direcciones canónicas apuntando a
+# una de ellas mientras la gente entra por la otra.
+[[redirects]]
+  from = "https://labodegadesara.netlify.app/*"
+  to = "https://labodegadesara.com/:splat"
+  status = 301
+  force = true
+
+# Y lo mismo con www: el sitio vive sin www, que es lo que dicen las canónicas.
+[[redirects]]
+  from = "https://www.labodegadesara.com/*"
+  to = "https://labodegadesara.com/:splat"
+  status = 301
+  force = true
+
 # Las direcciones antiguas con .html, por si alguna quedó enlazada por ahí.
 [[redirects]]
   from = "/catas.html"

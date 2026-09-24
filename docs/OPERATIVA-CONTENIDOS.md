@@ -193,12 +193,118 @@ No hay compilación: son ficheros estáticos. Sirve cualquier alojamiento.
 
 - Comando de compilación: *(vacío)*
 - Carpeta a publicar: `.` (la raíz)
+- Rama a desplegar: la rama por defecto del repositorio
 
 Vale igual Vercel, Cloudflare Pages o GitHub Pages.
 
-**Al conectar el dominio definitivo**, acuérdate de cambiar `dominio` en
-`config.js` y volver a sincronizar: de ahí salen las direcciones canónicas, el
-sitemap y los datos estructurados.
+---
+
+## 7.1 · Conectar el dominio labodegadesara.com
+
+El sitio nace en `labodegadesara.netlify.app`. Estos son los pasos para que se
+vea en el dominio propio.
+
+### Paso 1 · Añadir el dominio en Netlify
+
+En el panel de Netlify: **Site configuration → Domain management → Add a
+domain** y escribe `labodegadesara.com`.
+
+Netlify pregunta cómo quieres gestionar el DNS. Hay dos caminos:
+
+| Camino | Cuándo | Qué implica |
+|---|---|---|
+| **DNS de Netlify** *(recomendado)* | Si el dominio es sólo para esta web | Cambias los servidores de nombres en tu registrador y Netlify se encarga de todo, incluido el certificado |
+| **DNS de tu registrador** | Si ya tienes correo u otros servicios en ese dominio | Añades los registros a mano, sin tocar lo que ya funciona |
+
+### Paso 2a · Si eliges el DNS de Netlify
+
+Netlify te dará cuatro servidores de nombres, del estilo:
+
+```
+dns1.p01.nsone.net
+dns2.p01.nsone.net
+dns3.p01.nsone.net
+dns4.p01.nsone.net
+```
+
+En el panel de tu registrador (donde compraste el dominio) sustituye los
+servidores de nombres actuales por esos cuatro. **Copia los que te dé Netlify a
+ti**, no estos: cambian de un sitio a otro.
+
+### Paso 2b · Si prefieres mantener el DNS del registrador
+
+Añade estos dos registros en tu panel de DNS:
+
+| Tipo | Nombre | Valor |
+|---|---|---|
+| `A` | `@` (o vacío) | `75.2.60.5` |
+| `CNAME` | `www` | `labodegadesara.netlify.app` |
+
+Esa dirección IP es la de balanceo de Netlify; confirma en su panel que sigue
+siendo la misma antes de ponerla, porque es el único dato de esta guía que
+depende de ellos y puede cambiar.
+
+### Paso 3 · Dominio principal sin www
+
+En **Domain management**, deja `labodegadesara.com` como **primary domain** y
+`www.labodegadesara.com` como alias.
+
+Esto no es un capricho: las direcciones canónicas de toda la web dicen
+`https://labodegadesara.com/` sin www. Si el principal fuera el otro, cada
+página estaría diciéndole a Google que la buena es la que no sirve.
+
+### Paso 4 · Certificado HTTPS
+
+Cuando el DNS haya propagado, en **Domain management → HTTPS** pulsa
+**Verify DNS configuration** y después **Provision certificate**. Es gratis
+(Let's Encrypt) y suele tardar un par de minutos.
+
+Activa también **Force HTTPS**.
+
+### Paso 5 · Comprobar
+
+La propagación del DNS tarda entre unos minutos y 24 horas, según el
+registrador. Cuando termine:
+
+```bash
+# Debe responder 200 y ser la web
+curl -I https://labodegadesara.com/
+
+# Debe redirigir (301) al dominio bueno
+curl -I https://www.labodegadesara.com/
+curl -I https://labodegadesara.netlify.app/
+```
+
+Esas dos redirecciones ya están escritas en `netlify.toml`, así que funcionan
+solas. Son importantes: sin ellas tendrías la misma web respondiendo en tres
+direcciones distintas, y Google repartiría la autoridad entre las tres en lugar
+de sumarla.
+
+### Paso 6 · Avisar a Google
+
+Con el dominio ya funcionando:
+
+1. Date de alta en [Google Search Console](https://search.google.com/search-console)
+   y verifica la propiedad `labodegadesara.com` (si usas el DNS de Netlify, la
+   verificación por registro TXT es la más cómoda).
+2. Envía el sitemap: `https://labodegadesara.com/sitemap.xml`.
+3. Pide la indexación de la portada desde la herramienta de inspección de URL.
+
+### Si el dominio tarda en estar listo
+
+Mientras el dominio no responda, las direcciones canónicas de la web apuntan a
+un sitio que no existe todavía. No es grave durante unos días, pero si va para
+largo conviene evitar que Google indexe el subdominio de Netlify. La forma más
+rápida es activar **Site protection** (una contraseña) en Netlify mientras
+tanto, o cambiar `dominio` en `config.js` al subdominio y volver a cambiarlo
+cuando el dominio esté listo.
+
+### Si el correo deja de funcionar
+
+Sólo puede pasar si elegiste el DNS de Netlify y el dominio tenía correo
+configurado. En ese caso hay que volver a crear los registros `MX` (y los `TXT`
+de SPF y DKIM) en el DNS de Netlify, copiándolos de donde estaban antes.
+**Apúntalos antes de cambiar los servidores de nombres.**
 
 ---
 
