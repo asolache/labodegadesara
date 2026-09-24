@@ -89,6 +89,42 @@ columnas están rellenas, manda `documento`.
 
 ---
 
+## 2.4 · Qué se puede editar a mano y qué no
+
+Las páginas HTML son a la vez fuente y resultado: el sincronizador escribe
+dentro de ellas. Hay zonas que son de la página y zonas que se regeneran, y
+tocar las segundas es trabajo perdido.
+
+| Quiero cambiar… | Se toca en… |
+|---|---|
+| Un texto de una página (titular, párrafo, sección) | El propio HTML de esa página |
+| El menú, el pie, el lema de la marca | `parciales/cabecera.html`, `parciales/pie.html` |
+| El título o la descripción que salen en Google | `seo/paginas.js` |
+| Las preguntas frecuentes | `seo/paginas.js`, bloque `faq` de esa página |
+| Las catas y los artículos | La hoja de cálculo de Sara |
+
+Las zonas regeneradas llevan un aviso en el propio fichero, justo encima:
+
+```html
+<!-- NO EDITAR AQUÍ · Estas preguntas se escriben en seo/paginas.js … -->
+<div class="faq" data-faq>
+  <!-- contenido:inicio -->
+  …lo que escribe el sincronizador…
+  <!-- contenido:fin -->
+</div>
+```
+
+**Por qué importa con las preguntas frecuentes.** Salen a la vez en la página
+y en los datos estructurados, y Google exige que digan lo mismo. Por eso se
+escriben en un solo sitio: si se editaran en el HTML, quedarían diciendo una
+cosa a las personas y otra a los buscadores, y la siguiente sincronización las
+devolvería a su sitio de todas formas.
+
+Ante la duda: cambia lo que quieras, ejecuta `node scripts/sync.mjs` y mira si
+tu cambio sigue ahí. Si ha desaparecido, es que había que tocarlo en la fuente.
+
+---
+
 ## 3 · Sincronizar
 
 ### A mano

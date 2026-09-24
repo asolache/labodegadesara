@@ -109,7 +109,36 @@ export function persona(cfg) {
     jobTitle: cfg.persona.puesto,
     knowsAbout: cfg.temas,
     worksFor: { '@id': ID.negocio(d) },
-    sameAs: cfg.redes
+    sameAs: cfg.redes,
+
+    /* Titulación acreditada. Para Google es la diferencia entre alguien que
+       escribe sobre vino y alguien con autoridad demostrable para hacerlo. */
+    hasCredential: cfg.persona.titulacion ? {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'certification',
+      name: cfg.persona.titulacion.nombre,
+      recognizedBy: {
+        '@type': 'Organization',
+        name: cfg.persona.titulacion.entidad
+      }
+    } : undefined,
+
+    /* Dónde ha trabajado: asociarse a entidades reconocibles traslada parte
+       de su credibilidad. */
+    alumniOf: cfg.persona.titulacion ? {
+      '@type': 'Organization',
+      name: cfg.persona.titulacion.entidad
+    } : undefined,
+
+    affiliation: cfg.persona.trayectoria?.map(t => limpiar({
+      '@type': 'Organization',
+      name: t.nombre,
+      address: t.lugar ? {
+        '@type': 'PostalAddress',
+        addressLocality: t.lugar,
+        addressCountry: 'ES'
+      } : undefined
+    }))
   });
 }
 

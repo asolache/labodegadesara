@@ -155,6 +155,19 @@ más: no se rompe nada por dejarlo como está.
 
 ---
 
+## Si quieres cambiar textos de la web
+
+Los textos de las páginas (los titulares, los párrafos de «Sobre mí»…) se
+cambian en los ficheros de la web, y eso lo hace Álvaro.
+
+Hay una excepción importante: **las preguntas frecuentes**. Aunque las veas en
+la página, se escriben en otro sitio, porque tienen que decir exactamente lo
+mismo que la ficha que lee Google. Si las cambias directamente en la página, el
+cambio se pierde en la siguiente actualización. Dile a Álvaro qué quieres poner
+y lo pone donde toca.
+
+---
+
 ## Lo que nunca hay que hacer
 
 - ❌ Borrar la primera fila de una pestaña (la de los títulos).

@@ -22,14 +22,18 @@
  *   inventadas, ni valoraciones que nadie ha dejado. Un dato estructurado
  *   falso es motivo de penalización, además de una mentira.
  *
- * REVISAR CON SARA
+ * PENDIENTE
  * ---------------------------------------------------------------------------
- * · `persona.puesto`: si tiene titulación oficial de sumillería, conviene
- *   decirlo aquí y en los textos. «Sumiller en Barcelona» tiene muchísimas
- *   más búsquedas que cualquier alternativa, pero sólo se puede usar si es
- *   cierto.
- * · `rangoPrecios` y `zonas`: ajustar a la realidad.
+ * · `rangoPrecios`: ajustar si las catas se mueven de la horquilla actual.
  * · Cuando haya reseñas reales (Google Business), añadir aggregateRating.
+ *   Nunca antes, y nunca inventadas.
+ *
+ * RESUELTO
+ * ---------------------------------------------------------------------------
+ * · La titulación estaba pendiente de confirmar y ya consta en /sobre-mi/:
+ *   WSET 3, y experiencia como sumiller en Aleia (dos estrellas Michelin).
+ *   Por eso `persona.puesto` usa ya la palabra «sumiller», que es la que la
+ *   gente busca de verdad.
  */
 
 import { CONFIG, email } from '../assets/js/config.js';
@@ -47,7 +51,7 @@ export const SEO = {
      estructurados. */
   dominio: CONFIG.dominio.replace(/\/$/, ''),
   marca: CONFIG.marca,
-  lema: 'Vino sin postureo',
+  lema: 'Vino sin complicaciones',
 
   descripcionNegocio:
     'Catas de vino y experiencias en Barcelona para disfrutar del vino sin ' +
@@ -63,7 +67,8 @@ export const SEO = {
 
   redes: [CONFIG.instagram].filter(Boolean),
 
-  zonas: ['Barcelona', 'Área metropolitana de Barcelona', 'Cataluña'],
+  zonas: ['Barcelona', 'Sant Cugat del Vallès',
+          'Área metropolitana de Barcelona', 'Cataluña'],
 
   /* Los temas sobre los que esta marca tiene algo que decir. Es lo que un
      asistente de IA usa para decidir si merece la pena citarla ante una
@@ -115,15 +120,35 @@ export const SEO = {
     }
   ],
 
+  /* Todo lo de aquí lo cuenta ella misma en /sobre-mi/. Es lo que Google
+     entiende como experiencia y autoridad, y lo que un asistente cita al
+     explicar por qué merece la pena hacerle caso a alguien sobre vino. */
   persona: {
     nombre: 'Sara',
-    // Descriptivo y comprobable. Ver la nota de arriba sobre la titulación.
-    puesto: 'Divulgadora de vino y asesora de cartas para restaurantes',
+    puesto: 'Sumiller y asesora de vinos',
     descripcion:
-      'Acerca el vino a quienes sienten que no es para ellos, a través de ' +
-      'catas sin tecnicismos, asesoría de cartas para restaurantes y la ' +
-      'representación de pequeños productores.',
-    imagen: '/assets/img/fotos/sara-cata-blanco.jpg'
+      'Sumiller con once años de experiencia en hostelería. Ha trabajado en ' +
+      'el restaurante Aleia (dos estrellas Michelin, Barcelona) y como ' +
+      'comercial en Matos Wines. En 2023 abrió La Teresita Vinos y Platitos ' +
+      'en Sant Cugat del Vallès. Acerca el vino a quienes sienten que no es ' +
+      'para ellos, con catas sin tecnicismos, asesoría de cartas para ' +
+      'restaurantes y la representación de pequeños productores.',
+    imagen: '/assets/img/fotos/sara-cata-blanco.jpg',
+
+    // Titulación acreditada: es la diferencia entre decir "sabe de vino" y
+    // poder demostrarlo ante un buscador.
+    titulacion: {
+      nombre: 'WSET Level 3 Award in Wines',
+      entidad: 'Wine & Spirit Education Trust'
+    },
+
+    // Dónde ha trabajado. Aleia y La Teresita son entidades reconocibles, y
+    // asociarse a ellas traslada parte de su credibilidad.
+    trayectoria: [
+      { nombre: 'La Teresita Vinos y Platitos', lugar: 'Sant Cugat del Vallès' },
+      { nombre: 'Aleia', lugar: 'Barcelona' },
+      { nombre: 'Matos Wines' }
+    ]
   },
 
   /* ======================================================================
@@ -162,7 +187,7 @@ export const SEO = {
       titulo: 'Catas de vino en Barcelona · Agenda y catas privadas',
       descripcion:
         'Agenda de catas de vino en Barcelona y catas privadas a medida desde ' +
-        '6 personas. Grupos pequeños, para todos los niveles y sin postureo.',
+        '6 personas. Grupos pequeños, para todos los niveles y sin tecnicismos.',
       clavePrincipal: 'catas de vino en Barcelona',
       clavesSecundarias: [
         'cata privada Barcelona',
@@ -181,39 +206,27 @@ export const SEO = {
          aquí sin que se vean sería contenido engañoso, y Google lo penaliza. */
       faq: [
         {
-          pregunta: 'No tengo ni idea de vino. ¿Voy a hacer el ridículo?',
+          pregunta: '¿Necesito saber de vino para participar en una cata?',
           respuesta:
-            'No. La mayoría de quien viene está igual. En estas catas no se ' +
-            'examina a nadie: se prueba, se opina y se puede decir «este no me ' +
-            'gusta» sin que pase nada. No hace falta ningún conocimiento previo.'
+            'No. Las catas están pensadas precisamente para acercarse al vino ' +
+            'desde la curiosidad, sin necesidad de conocimientos previos.'
         },
         {
-          pregunta: '¿Puedo ir sola o solo a una cata de vino?',
+          pregunta: '¿Cuánto dura una cata de vino?',
           respuesta:
-            'Sí, y ocurre a menudo. Los grupos son pequeños, de unas 12 a 14 ' +
-            'personas, así que en pocos minutos ya está todo el mundo hablando. ' +
-            'Es una buena manera de conocer gente con la misma curiosidad.'
+            'Las catas suelen durar entre 1,5 y 2 horas ¡aunque al final siempre ' +
+            'se alargan!'
         },
         {
-          pregunta: '¿Qué se come durante la cata?',
+          pregunta: '¿Cuántos vinos se prueban en una cata?',
           respuesta:
-            'Siempre hay algo que acompaña: quesos, conservas, embutido o lo que ' +
-            'pida el vino de ese día. No es una cena, pero nadie se queda con ' +
-            'hambre. Las alergias e intolerancias se avisan al reservar.'
+            'Dependiendo de la cata pero se suelen probar entre 4 y 5 vinos.'
         },
         {
-          pregunta: '¿Se puede cancelar una reserva de cata?',
+          pregunta: '¿Dónde se realizan las catas de vino?',
           respuesta:
-            'Sí. Avisando con 48 horas de antelación se devuelve el importe o se ' +
-            'traslada la plaza a otra fecha. Con menos margen las botellas ya ' +
-            'están compradas, así que sólo se puede cambiar la fecha.'
-        },
-        {
-          pregunta: '¿Hacéis catas de vino para empresas?',
-          respuesta:
-            'Sí. Las catas para empresas y equipos se adaptan al número de ' +
-            'personas, al espacio y al presupuesto, y se pueden hacer en la ' +
-            'propia oficina o en un espacio alquilado en Barcelona.'
+            'Las catas programadas se realizan en los espacios indicados en cada ' +
+            'actividad. También organizo catas privadas en Barcelona y Catalunya.'
         },
         {
           pregunta: '¿Cuánto cuesta una cata de vino?',
@@ -221,6 +234,27 @@ export const SEO = {
             'Las catas abiertas en Barcelona están normalmente entre 30 y 40 ' +
             'euros por persona, según los vinos y el acompañamiento. Las catas ' +
             'privadas se presupuestan según el grupo y el lugar.'
+        },
+        {
+          pregunta: '¿Las catas incluyen algo de comer?',
+          respuesta:
+            'Siempre hay algo que acompaña: quesos, conservas, embutido o lo que ' +
+            'pida el vino de ese día. No es una cena, pero nadie se queda con ' +
+            'hambre. Las alergias e intolerancias se avisan al reservar.'
+        },
+        {
+          pregunta: '¿Se puede cancelar una reserva en una cata?',
+          respuesta:
+            'Sí. Si me avisas con 48 horas de antelación te devuelvo el importe o ' +
+            'hacemos un cambio de fecha. Con menos margen ya lo tengo todo ' +
+            'preparado y se perderá la reserva.'
+        },
+        {
+          pregunta: '¿Haces cata de vino para empresas?',
+          respuesta:
+            'Sí. Las catas para empresas y equipos se adaptan al número de ' +
+            'personas, al espacio y al presupuesto, y se pueden hacer en la ' +
+            'propia oficina o en un espacio alquilado.'
         }
       ],
 
@@ -264,34 +298,42 @@ export const SEO = {
 
       faq: [
         {
-          pregunta: '¿Cuánto se tarda en rehacer la carta de vinos de un restaurante?',
+          pregunta: '¿Qué tipo de restaurantes pueden trabajar con La Bodega de Sara?',
           respuesta:
-            'Un encargo completo suele llevar entre cuatro y seis semanas, según ' +
-            'el tamaño de la carta y lo rápido que se puedan catar las ' +
-            'referencias con los platos del restaurante.'
+            'Trabajo con restaurantes que quieren revisar, crear o actualizar su ' +
+            'carta de vinos y mejorar la forma en que el equipo la presenta en ' +
+            'sala. No importa tanto el tamaño como tener una propuesta ' +
+            'gastronómica con personalidad y ganas de trabajar el vino de forma ' +
+            'coherente.'
         },
         {
-          pregunta: '¿Se puede contratar sólo la formación del equipo de sala?',
+          pregunta: '¿Trabajas solo en Barcelona?',
           respuesta:
-            'Se puede, pero funciona mejor junto con la carta. El equipo aprende ' +
-            'a vender los vinos que tiene delante, así que la formación rinde ' +
-            'más cuando la carta está pensada para poder contarse.'
+            'Trabajo principalmente en Sant Cugat del Vallès, Barcelona y otros ' +
+            'puntos de Catalunya. Para proyectos concretos, podemos valorar ' +
+            'desplazamientos a otras zonas.'
         },
         {
-          pregunta: '¿Cómo ayuda una carta de vinos a subir el ticket medio?',
+          pregunta: 'Ya tengo carta de vinos. ¿Puedes revisarla?',
           respuesta:
-            'La botella se decide en la mesa, no en la carta. Cuando la sala ' +
-            'sabe recomendar, el cliente acaba eligiendo un vino mejor del que ' +
-            'habría pedido solo, y se va más satisfecho. Además, trabajar con ' +
-            'productores pequeños mejora el margen, porque son referencias que ' +
-            'el cliente no puede comparar en el móvil.'
+            'Sí. Podemos analizar qué funciona, qué no rota, qué referencias ' +
+            'faltan y qué oportunidades hay para hacerla más coherente y ' +
+            'personal.'
         },
         {
-          pregunta: '¿Trabajáis con restaurantes fuera de Barcelona?',
+          pregunta: '¿Cuánto tarda en hacerse una carta de vinos?',
           respuesta:
-            'La base de trabajo es Barcelona y su área metropolitana. Fuera de ' +
-            'ahí se estudia caso por caso, según el proyecto y los ' +
-            'desplazamientos que requiera.'
+            'Depende del tamaño de la carta, el número de referencias y el ' +
+            'proceso de selección y cata. Como orientación, un proyecto completo ' +
+            'suele desarrollarse en unas cuatro a seis semanas.'
+        },
+        {
+          pregunta: '¿Tengo que cambiar toda mi carta?',
+          respuesta:
+            'No necesariamente. El objetivo no es cambiar por cambiar, sino ' +
+            'entender qué tienes, qué funciona y qué puede mejorar. En algunos ' +
+            'restaurantes tendrá sentido rehacerla; en otros, hacer una revisión ' +
+            'y actualización.'
         }
       ],
 
@@ -353,12 +395,11 @@ export const SEO = {
             'supermercado, no es el encaje adecuado.'
         },
         {
-          pregunta: '¿Cómo empieza la colaboración?',
+          pregunta: '¿Qué tipo de clientes buscas para mis vinos?',
           respuesta:
-            'La bodega envía sus vinos para catarlos con calma y recibe una ' +
-            'opinión sincera. Si encaja, se acuerdan por escrito zona, ' +
-            'exclusividad, precios y objetivos, y a partir de ahí empiezan las ' +
-            'visitas comerciales y las catas de venta.'
+            'Restaurantes, vinotecas, tiendas gourmet… Tus vinos tendrán ' +
+            'presencia en aquellos establecimientos que se dediquen a darle valor ' +
+            'a proyectos con identidad y pequeños productores.'
         }
       ],
 
@@ -403,11 +444,16 @@ export const SEO = {
        persona reconocible para los buscadores.                              */
     'sobre-mi/index.html': {
       url: '/sobre-mi/',
-      titulo: 'Sobre mí · Sara, de La Bodega de Sara',
+      titulo: 'Sara, sumiller en Barcelona · La Bodega de Sara',
       descripcion:
-        'Soy Sara y acerco el vino a quien siente que no es para él: catas sin ' +
-        'postureo, cartas con identidad y pequeños productores con nombre.',
-      clavePrincipal: 'La Bodega de Sara quién es',
+        'Sumiller con once años en hostelería, formada en WSET 3 y pasada por ' +
+        'Aleia. Acerco el vino a quien siente que no es para él, sin complicaciones.',
+      clavePrincipal: 'sumiller Barcelona',
+      clavesSecundarias: [
+        'sumiller Sant Cugat',
+        'La Bodega de Sara quién es',
+        'asesora de vinos Barcelona'
+      ],
       imagen: '/assets/img/fotos/sara-cata-blanco.jpg',
       imagenAlt: 'Sara oliendo una copa de vino blanco, de perfil, con luz cálida',
       tipoPagina: 'AboutPage',
