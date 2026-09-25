@@ -115,11 +115,16 @@
   status = 301
   force = true
 
-[[redirects]]
-  from = "/blog/:slug.html"
-  to = "/blog/:slug/"
-  status = 301
-  force = true
+# Aquí había una regla "/blog/:slug.html" → "/blog/:slug/". Se retira porque
+# en Netlify un comodín como :slug ocupa un segmento entero de la ruta, y
+# mezclarlo con texto literal dentro del mismo segmento no es fiable: con
+# force = true la regla se evalúa antes de servir el fichero, y si llega a
+# coincidir con /blog/<articulo>/ lo redirige a sí mismo. Bucle, y el artículo
+# deja de abrirse.
+#
+# No hacía falta: las direcciones .html de los artículos nunca llegaron a estar
+# publicadas. Si algún día hay que redirigir una, se escribe entera y sin
+# comodines dentro del segmento.
 
 # Las carpetas de trabajo no se publican.
 [[redirects]]

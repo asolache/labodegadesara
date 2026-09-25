@@ -349,6 +349,12 @@ regresión no llega a publicarse.
   un día, en producción. Qué dominio es el bueno lo deciden el panel de Netlify
   y las canónicas de las páginas, nunca una regla escrita a mano. El
   comprobador ahora falla si aparece una así.
+- **Un comodín ocupa un segmento entero de la ruta.** La regla
+  `/blog/:slug.html` → `/blog/:slug/` mezclaba comodín y texto literal en el
+  mismo segmento. Con `force`, Netlify llegaba a hacer coincidir
+  `/blog/<articulo>/` y lo redirigía a sí mismo: bucle, y los artículos sin
+  abrirse. Fue la causa de que los posts no funcionaran, por debajo de otros
+  dos fallos que tapaban el diagnóstico.
 - **Con la web en producción, ningún cambio de infraestructura a ciegas.** Las
   redirecciones, los dominios y las ramas se tocan comprobando el resultado
   antes y después, y de uno en uno.

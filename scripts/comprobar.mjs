@@ -416,6 +416,21 @@ async function revisarAlojamiento() {
         'inaccesible. Acótala a rutas concretas o deja que lo resuelva el ' +
         'panel del alojamiento.');
     }
+
+    /* Un comodín (:algo) ocupa un segmento entero de la ruta. Mezclarlo con
+       texto literal dentro del mismo segmento no es fiable, y con force puede
+       acabar redirigiendo una página a sí misma. Pasó con "/blog/:slug.html",
+       que dejó los artículos sin abrirse. */
+    const comodinImpuro = desde.split('/')
+      .some(seg => /:[A-Za-z_]\w*/.test(seg) && !/^:[A-Za-z_]\w*$/.test(seg));
+
+    if (comodinImpuro) {
+      error(fichero,
+        `la redirección «${desde}» mezcla un comodín con texto literal en el ` +
+        'mismo segmento de la ruta. Un comodín tiene que ocupar el segmento ' +
+        'entero; si no, puede capturar direcciones que no debía y redirigirlas ' +
+        'a sí mismas.');
+    }
   }
 }
 
