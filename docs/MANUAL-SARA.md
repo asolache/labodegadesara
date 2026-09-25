@@ -2,6 +2,10 @@
 
 Sara, esto es todo lo que necesitas saber. **No hay que tocar nada de programación.**
 
+> Si buscas algo concreto —publicar, editar, retirar un artículo, fotos,
+> cuándo se ve cada cosa, qué hacer si algo no sale— está todo junto y con
+> índice en la **[base de conocimiento](BASE-DE-CONOCIMIENTO.md)**.
+
 Trabajas en dos sitios que ya conoces: una **hoja de cálculo de Google** para las
 catas, y **Google Docs** para escribir los artículos del blog. Nada más.
 

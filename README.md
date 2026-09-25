@@ -51,6 +51,7 @@ No hay `npm install`. Sólo hace falta Node 18 o superior.
 
 | Documento | Para quién |
 |---|---|
+| **[Base de conocimiento](docs/BASE-DE-CONOCIMIENTO.md)** | **Empieza aquí.** Publicar, editar, fotos, catas y qué se toca dónde |
 | [Manual de Sara](docs/MANUAL-SARA.md) | Para Sara. Cómo publicar catas y artículos |
 | [Operativa de contenidos](docs/OPERATIVA-CONTENIDOS.md) | Montaje de Google Sheets y Docs, publicación, alojamiento |
 | [Propuesta de diseño](docs/PROPUESTA-DISENO.md) | Decisiones de marca, arquitectura y accesibilidad |
