@@ -343,9 +343,15 @@ regresión no llega a publicarse.
 - **No listar nada que no tenga página.** El listado del blog se sirve del
   fichero que la sincronización escribe junto con las páginas, nunca en vivo
   desde la hoja: si no, aparecen enlaces a artículos que aún no existen.
-- **No redirigir el subdominio de Netlify al dominio propio a mano.** Mandaba
-  toda la web a un dominio que todavía no estaba conectado. Netlify ya lo hace
-  solo, y sólo cuando el dominio responde.
+- **Ninguna redirección debe capturar un host entero.** Una regla mandaba todo
+  el sitio (`https://<sitio>.netlify.app/*`) al dominio propio, que aún no
+  estaba conectado: la web estuvo respondiendo hacia un dominio muerto más de
+  un día, en producción. Qué dominio es el bueno lo deciden el panel de Netlify
+  y las canónicas de las páginas, nunca una regla escrita a mano. El
+  comprobador ahora falla si aparece una así.
+- **Con la web en producción, ningún cambio de infraestructura a ciegas.** Las
+  redirecciones, los dominios y las ramas se tocan comprobando el resultado
+  antes y después, y de uno en uno.
 - **Las preguntas frecuentes, en una sola fuente.** Se ven en la página y se
   declaran para Google; si se editan por separado acaban diciendo cosas
   distintas, y eso Google lo penaliza.

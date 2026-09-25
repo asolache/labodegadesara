@@ -375,6 +375,51 @@ async function revisarArticulos() {
 }
 
 /* ==========================================================================
+   Configuración del alojamiento
+   ========================================================================== */
+
+/**
+ * Revisa netlify.toml en busca de reglas capaces de dejar la web inaccesible.
+ *
+ * Existe por un incidente real: una redirección mandaba todo el sitio
+ * (`https://<sitio>.netlify.app/*`) al dominio propio, que aún no estaba
+ * conectado. Resultado: la web entera respondiendo hacia un dominio muerto
+ * durante más de un día.
+ *
+ * La regla que se saca de ahí: una redirección puede acotarse a rutas
+ * concretas, pero nunca capturar un host entero y mandarlo fuera del sitio.
+ * Qué dominio es el bueno lo deciden el panel del alojamiento y las
+ * direcciones canónicas, no una regla escrita a mano.
+ */
+async function revisarAlojamiento() {
+  const fichero = 'netlify.toml';
+  if (!existsSync(ruta(fichero))) return;
+
+  const texto = await readFile(ruta(fichero), 'utf8');
+
+  // Bloques [[redirects]] con sus campos, sin necesitar un analizador de TOML.
+  for (const bloque of texto.split('[[redirects]]').slice(1)) {
+    const valor = clave => (bloque.match(new RegExp(`${clave}\\s*=\\s*"([^"]*)"`)) || [])[1];
+
+    const desde = valor('from');
+    const hacia = valor('to');
+    if (!desde || !hacia) continue;
+
+    const forzada = /force\s*=\s*true/.test(bloque);
+    const capturaHost = /^https?:\/\/[^/]+\/\*$/.test(desde.trim());
+    const saleFuera = /^https?:\/\//.test(hacia.trim());
+
+    if (forzada && capturaHost && saleFuera) {
+      error(fichero,
+        `la redirección «${desde}» captura un host entero y lo manda a ` +
+        `«${hacia}» con force. Si el destino no responde, la web queda ` +
+        'inaccesible. Acótala a rutas concretas o deja que lo resuelva el ' +
+        'panel del alojamiento.');
+    }
+  }
+}
+
+/* ==========================================================================
    Principal
    ========================================================================== */
 
@@ -420,6 +465,7 @@ for (const pagina of paginas) {
 }
 
 await revisarArticulos();
+await revisarAlojamiento();
 
 if (avisos.length) {
   console.log('\x1b[33mAvisos\x1b[0m');

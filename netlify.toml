@@ -71,13 +71,12 @@
 # el propio Netlify quien redirige el subdominio, y sólo cuando el dominio ya
 # responde de verdad.
 
-# www al dominio sin www, que es el que dicen las canónicas. Esta sí es segura:
-# www.labodegadesara.com sólo llega hasta aquí si el dominio está conectado.
-[[redirects]]
-  from = "https://www.labodegadesara.com/*"
-  to = "https://labodegadesara.com/:splat"
-  status = 301
-  force = true
+# Tampoco se redirige aquí www al dominio sin www. Netlify ya lo hace según
+# cuál sea el dominio principal del sitio, y hacerlo también aquí sólo puede
+# entrar en conflicto con esa configuración. La regla de oro tras el incidente
+# del 24: en este fichero no se escriben reglas que capturen un host entero.
+# Lo que decide qué dominio es el bueno es el panel de Netlify y las
+# direcciones canónicas de las páginas, no una redirección escrita a mano.
 
 # Las direcciones antiguas con .html, por si alguna quedó enlazada por ahí.
 [[redirects]]
