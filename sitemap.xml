@@ -42,22 +42,4 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://labodegadesara.com/blog/como-pedir-vino-en-un-restaurante-sin-sentirte-un-impostor/</loc>
-    <lastmod>2026-09-10</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://labodegadesara.com/blog/que-significa-de-verdad-que-un-vino-sea-natural/</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://labodegadesara.com/blog/bienvenido-a-la-bodega-de-sara/</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
 </urlset>
