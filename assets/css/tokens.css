@@ -21,10 +21,10 @@
   --c-tinta-suave:  #504a45; /* texto secundario                              */
   --c-tinta-tenue:  #857d76; /* metadatos, pies de foto                       */
 
-  --c-rojo:         #c72a2e; /* EL color del logo: la mancha de vino          */
-  --c-rojo-hondo:   #9e2024; /* su versión oscura, para estados               */
-  --c-rojo-velo:    #fbe9e9; /* fondo de etiquetas                            */
-  --c-rojo-claro:   #e8706f; /* el rojo, aclarado para leerse sobre penumbra   */
+  --c-rojo:         #a32030; /* granate: el rojo del logo llevado al vino     */
+  --c-rojo-hondo:   #7d1f2d; /* su versión oscura, para estados               */
+  --c-rojo-velo:    #f8e7e9; /* fondo de etiquetas                            */
+  --c-rojo-claro:   #d4737c; /* el granate, aclarado para leerse sobre penumbra*/
 
   --c-oliva:        #6a6a4c; /* acento terciario: campo, viña                 */
 
@@ -59,29 +59,35 @@
   --foco:             var(--c-rojo);
 
   /* ---------- Tipografía --------------------------------------------------
-     Fraunces: serif variable, cálida y artesanal → titulares.
-     Karla: sans humanista, muy legible en castellano → texto corrido.
+     Cormorant Garamond: serif de contraste alto y asta fina → titulares.
+     Acompaña al trazo del logo, que también es fino, y da la elegancia que
+     piden los restaurantes sin caer en lo recargado.
+     Jost: geométrica de líneas limpias → texto. Deja que el titular y el
+     logo lleven la voz, en lugar de competir con ellos.
      Ambas con pila de respaldo del sistema por si Google Fonts no carga.  */
 
-  --font-titulo: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype',
+  --font-titulo: 'Cormorant Garamond', 'Iowan Old Style', 'Palatino Linotype',
                  'Book Antiqua', Georgia, serif;
-  --font-texto:  'Karla', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-texto:  'Jost', 'Futura', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
 
   /* Escala tipográfica fluida (clamp: móvil → escritorio) */
   --t-xs:   0.78rem;
   --t-sm:   0.875rem;
   --t-base: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
   --t-md:   clamp(1.125rem, 1.07rem + 0.28vw, 1.25rem);
-  --t-lg:   clamp(1.35rem, 1.22rem + 0.6vw, 1.7rem);
-  --t-xl:   clamp(1.7rem, 1.45rem + 1.15vw, 2.4rem);
-  --t-2xl:  clamp(2.1rem, 1.6rem + 2.3vw, 3.4rem);
-  --t-3xl:  clamp(2.6rem, 1.8rem + 3.6vw, 4.6rem);
+  /* Los tres últimos sólo los usan los titulares, en Cormorant: van un punto
+     por encima de lo habitual porque su altura de x es pequeña y, a igualdad
+     de píxeles, se lee más menuda que una sans. */
+  --t-lg:   clamp(1.45rem, 1.3rem + 0.7vw, 1.9rem);
+  --t-xl:   clamp(1.9rem, 1.6rem + 1.3vw, 2.7rem);
+  --t-2xl:  clamp(2.35rem, 1.75rem + 2.6vw, 3.9rem);
+  --t-3xl:  clamp(2.9rem, 2rem + 4vw, 5.2rem);
 
   --lh-apretado: 1.12;
-  --lh-titulo:   1.2;
+  --lh-titulo:   1.14;
   --lh-texto:    1.7;
 
-  --ls-titular:  -0.015em;
+  --ls-titular:  -0.005em;
   --ls-epigrafe: 0.16em;  /* para los antetítulos en mayúsculas */
 
   /* ---------- Espaciado (escala de 4px) ---------------------------------- */

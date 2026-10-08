@@ -8,9 +8,13 @@
 <link rel="icon" href="/assets/img/favicon.png" type="image/png" sizes="64x64">
 <link rel="apple-touch-icon" href="/assets/img/icono.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Karla:ital,wght@0,400..700;1,400..600&display=swap">
+<!-- Las tipografías se sirven desde este mismo dominio: ni preconnect ni
+     peticiones a Google desde el navegador de quien visita. -->
+<link rel="preload" href="/assets/fuentes/cormorant-garamond-600-latin.woff2"
+      as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fuentes/jost-400-latin.woff2"
+      as="font" type="font/woff2" crossorigin>
 
+<link rel="stylesheet" href="/assets/css/fuentes.css">
 <link rel="stylesheet" href="/assets/css/tokens.css">
 <link rel="stylesheet" href="/assets/css/main.css">

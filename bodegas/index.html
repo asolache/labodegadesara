@@ -12,10 +12,14 @@
 <link rel="icon" href="/assets/img/favicon.png" type="image/png" sizes="64x64">
 <link rel="apple-touch-icon" href="/assets/img/icono.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Karla:ital,wght@0,400..700;1,400..600&display=swap">
+<!-- Las tipografías se sirven desde este mismo dominio: ni preconnect ni
+     peticiones a Google desde el navegador de quien visita. -->
+<link rel="preload" href="/assets/fuentes/cormorant-garamond-600-latin.woff2"
+      as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fuentes/jost-400-latin.woff2"
+      as="font" type="font/woff2" crossorigin>
 
+<link rel="stylesheet" href="/assets/css/fuentes.css">
 <link rel="stylesheet" href="/assets/css/tokens.css">
 <link rel="stylesheet" href="/assets/css/main.css">
 <!-- /#incluir -->
@@ -398,7 +402,6 @@
     <a class="marca" href="/" aria-label="La Bodega de Sara · inicio">
       <img src="/assets/img/logo.png" alt="La Bodega de Sara"
            width="560" height="235" fetchpriority="high" decoding="async">
-      <span>Vino sin complicaciones</span>
     </a>
 
     <nav class="nav" data-nav aria-label="Navegación principal">
@@ -652,8 +655,7 @@
       <div>
         <h2 class="pie__marca">
           <img src="/assets/img/icono-claro.png" alt="" width="256" height="256" loading="lazy">
-          <span class="pie__nombre">La Bodega de Sara
-            <span>Vino sin complicaciones</span></span>
+          <span class="pie__nombre">La Bodega de Sara</span>
         </h2>
         <p>Te hablo del vino desde su origen. Experiencias,
            cartas con criterio y pequeños productores que merecen ser conocidos.</p>

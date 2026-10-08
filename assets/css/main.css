@@ -54,13 +54,23 @@ ul[role='list'], ol[role='list'] {
    2 · BASE
    ========================================================================== */
 
+/* Cormorant trae por defecto cifras de estilo antiguo, que suben y bajan de
+   la línea base. Quedan preciosas dentro de un texto, pero en una fecha, un
+   precio o un número suelto se leen torcidas: ahí se piden cifras alineadas. */
+.cata__dia,
+.cata__precio,
+.paso__num,
+time {
+  font-variant-numeric: lining-nums;
+  font-feature-settings: 'lnum' 1;
+}
+
 h1, h2, h3, h4 {
   font-family: var(--font-titulo);
   font-weight: 600;
   line-height: var(--lh-titulo);
   letter-spacing: var(--ls-titular);
   text-wrap: balance;
-  font-variation-settings: 'SOFT' 30, 'WONK' 1;
 }
 
 h1 { font-size: var(--t-3xl); line-height: var(--lh-apretado); }
@@ -153,7 +163,7 @@ hr {
   display: block;
   font-family: var(--font-texto);
   font-size: var(--t-xs);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: var(--ls-epigrafe);
   text-transform: uppercase;
   color: var(--acento);
@@ -459,7 +469,7 @@ hr {
   gap: var(--e-1);
   padding: 0.3em 0.75em;
   font-size: var(--t-xs);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   background: var(--c-papel-2);
@@ -614,7 +624,7 @@ hr {
 
 .cata__mes {
   font-size: var(--t-xs);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--c-rojo-hondo);
@@ -1037,7 +1047,7 @@ hr {
 
 .articulo a { color: var(--c-rojo); }
 
-.articulo strong { font-weight: 700; }
+.articulo strong { font-weight: 600; }
 
 /* ---- Bloque de suscripción / CTA final ---- */
 
@@ -1162,7 +1172,7 @@ hr {
 .pie h3 {
   font-family: var(--font-texto);
   font-size: var(--t-xs);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: var(--ls-epigrafe);
   text-transform: uppercase;
   color: var(--texto-inverso);
@@ -1243,20 +1253,6 @@ hr {
 .marca img {
   width: clamp(9.5rem, 22vw, 13rem);
   height: auto;
-}
-
-/* El lema sólo aparece cuando sobra espacio: el logo ya dice el nombre y en
-   pantallas medianas sólo sería ruido al lado de un trazo a mano. */
-.marca span {
-  display: none;
-  padding-left: var(--e-4);
-  border-left: 1px solid var(--borde);
-  margin-top: 0;
-  color: var(--texto-tenue);
-}
-
-@media (min-width: 75rem) {
-  .marca span { display: block; }
 }
 
 /* ---- El pie, con la copa suelta ---- */
