@@ -88,7 +88,7 @@ a:hover { color: var(--acento); }
 }
 
 ::selection {
-  background: var(--c-oro-velo);
+  background: var(--c-rojo-velo);
   color: var(--c-tinta);
 }
 
@@ -144,7 +144,7 @@ hr {
 .seccion--alt  { background: var(--fondo-alt); }
 .seccion--osc  { background: var(--fondo-oscuro); color: var(--texto-inverso); }
 .seccion--osc h2, .seccion--osc h3 { color: var(--texto-inverso); }
-.seccion--osc .epigrafe { color: var(--c-oro-claro); }
+.seccion--osc .epigrafe { color: var(--c-rojo-claro); }
 
 .centrado { text-align: center; }
 
@@ -179,10 +179,10 @@ hr {
   width: 3.5rem;
   height: 2px;
   margin-top: var(--e-4);
-  background: linear-gradient(90deg, var(--c-oro), transparent);
+  background: linear-gradient(90deg, var(--c-rojo), transparent);
 }
 
-.centrado .filete::after { margin-inline: auto; background: var(--c-oro); }
+.centrado .filete::after { margin-inline: auto; background: var(--c-rojo); }
 
 /* ==========================================================================
    4 · LAYOUT
@@ -249,7 +249,7 @@ hr {
   align-items: center;
   justify-content: space-between;
   gap: var(--e-4);
-  min-height: 4.25rem;
+  min-height: 4.9rem;
 }
 
 .marca {
@@ -337,7 +337,7 @@ hr {
 @media (max-width: 60rem) {
   .nav__lista {
     position: fixed;
-    inset: 4.25rem 0 auto 0;
+    inset: 4.9rem 0 auto 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -402,18 +402,20 @@ hr {
 .boton:active { transform: translateY(0); }
 
 .boton--principal {
-  background: var(--c-vino);
+  background: var(--c-rojo);
   color: #fff;
 }
 
-.boton--principal:hover { background: #571b29; color: #fff; }
+.boton--principal:hover { background: var(--c-rojo-hondo); color: #fff; }
 
+/* Sobre fondo oscuro, donde el rojo pleno vibra demasiado: fondo claro y
+   texto oscuro. Mantiene la jerarquía sin pelearse con la fotografía. */
 .boton--oro {
-  background: var(--c-oro);
-  color: #fff;
+  background: var(--texto-inverso);
+  color: var(--c-tinta);
 }
 
-.boton--oro:hover { background: var(--c-oro-claro); color: #fff; }
+.boton--oro:hover { background: #fff; color: var(--c-tinta); }
 
 .boton--linea {
   background: transparent;
@@ -424,7 +426,7 @@ hr {
 .boton--linea:hover {
   border-color: var(--acento);
   color: var(--acento);
-  background: var(--c-oro-velo);
+  background: var(--c-rojo-velo);
 }
 
 .boton--claro {
@@ -460,14 +462,14 @@ hr {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  background: var(--c-oro-velo);
-  color: #8a5e1c;
+  background: var(--c-papel-2);
+  color: var(--c-tinta-suave);
   border-radius: var(--r-full);
   white-space: nowrap;
 }
 
-.etiqueta--vino  { background: #f3e2e5; color: var(--c-vino); }
-.etiqueta--oliva { background: #e9ebdf; color: #4f5137; }
+.etiqueta--vino  { background: var(--c-rojo-velo); color: var(--c-rojo-hondo); }
+.etiqueta--oliva { background: #eceee2; color: #4f5137; }
 .etiqueta--agotado { background: #efe9e3; color: var(--texto-tenue); }
 
 /* ---- Tarjeta genérica ---- */
@@ -597,7 +599,7 @@ hr {
   justify-content: center;
   width: 4.5rem;
   padding: var(--e-3) var(--e-2);
-  background: var(--c-oro-velo);
+  background: var(--c-rojo-velo);
   border-radius: var(--r-md);
   text-align: center;
   line-height: 1.1;
@@ -607,7 +609,7 @@ hr {
   font-family: var(--font-titulo);
   font-size: 1.7rem;
   font-weight: 600;
-  color: var(--c-vino);
+  color: var(--c-rojo);
 }
 
 .cata__mes {
@@ -615,7 +617,7 @@ hr {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #8a5e1c;
+  color: var(--c-rojo-hondo);
   margin-top: 2px;
 }
 
@@ -713,7 +715,7 @@ hr {
   position: absolute;
   left: 0; top: 0.65em;
   width: 0.9rem; height: 2px;
-  background: var(--c-oro);
+  background: var(--c-rojo);
 }
 
 .seccion--osc .lista-marcas li { color: var(--texto-inverso-2); }
@@ -730,7 +732,7 @@ hr {
   color: var(--c-arena);
 }
 
-.seccion--osc .paso__num { color: rgba(212, 164, 65, 0.35); }
+.seccion--osc .paso__num { color: rgba(247, 244, 240, 0.22); }
 
 .paso h3 { font-size: var(--t-md); }
 .paso p { color: var(--texto-suave); font-size: var(--t-sm); }
@@ -769,7 +771,7 @@ hr {
 .campo textarea:focus {
   outline: none;
   border-color: var(--acento);
-  box-shadow: 0 0 0 3px rgba(217, 164, 65, 0.22);
+  box-shadow: 0 0 0 3px rgba(199, 42, 46, 0.18);
 }
 
 .campo textarea { resize: vertical; min-height: 8rem; }
@@ -861,7 +863,7 @@ hr {
 
 .hero h1 em {
   font-style: italic;
-  color: var(--c-oro-claro);
+  color: var(--c-rojo-claro);
 }
 
 .hero__entradilla {
@@ -870,7 +872,7 @@ hr {
   max-width: 30rem;
 }
 
-.hero .epigrafe { color: var(--c-oro-claro); margin-bottom: 0; }
+.hero .epigrafe { color: var(--c-rojo-claro); margin-bottom: 0; }
 
 .hero__pie {
   display: flex;
@@ -893,7 +895,7 @@ hr {
   content: '';
   width: 5px; height: 5px;
   border-radius: 50%;
-  background: var(--c-oro);
+  background: var(--c-rojo);
 }
 
 /* ---- Cabecera de página interior ---- */
@@ -949,8 +951,8 @@ hr {
   place-items: center;
   width: 3rem; height: 3rem;
   border-radius: var(--r-full);
-  background: var(--c-oro-velo);
-  color: var(--c-vino);
+  background: var(--c-rojo-velo);
+  color: var(--c-rojo);
 }
 
 .via h3 { font-size: var(--t-md); }
@@ -1026,14 +1028,14 @@ hr {
 
 .articulo blockquote {
   padding-left: var(--e-5);
-  border-left: 3px solid var(--c-oro);
+  border-left: 3px solid var(--c-rojo);
   font-family: var(--font-titulo);
   font-size: var(--t-md);
   font-style: italic;
   color: var(--texto-suave);
 }
 
-.articulo a { color: var(--c-vino); }
+.articulo a { color: var(--c-rojo); }
 
 .articulo strong { font-weight: 700; }
 
@@ -1153,7 +1155,7 @@ hr {
   font-size: 0.6rem;
   letter-spacing: var(--ls-epigrafe);
   text-transform: uppercase;
-  color: var(--c-oro-claro);
+  color: var(--c-rojo-claro);
   margin-top: 2px;
 }
 
@@ -1170,7 +1172,7 @@ hr {
 .pie ul { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--e-3); }
 
 .pie a { text-decoration: none; color: var(--texto-inverso-2); }
-.pie a:hover { color: var(--c-oro-claro); }
+.pie a:hover { color: var(--c-rojo-claro); }
 
 .pie__legal {
   display: flex;
@@ -1199,8 +1201,8 @@ hr {
 }
 
 .redes a:hover {
-  background: var(--c-oro);
-  border-color: var(--c-oro);
+  background: var(--c-rojo);
+  border-color: var(--c-rojo);
   color: #fff;
 }
 
@@ -1222,3 +1224,55 @@ hr {
   a::after { content: ' (' attr(href) ')'; font-size: 9pt; color: #555; }
   [data-animar] { opacity: 1; transform: none; }
 }
+
+/* ==========================================================================
+   10 · MARCA
+   El logo es un trazo a mano: necesita aire alrededor y ningún adorno que
+   compita con él. Por eso la cabecera no lleva más que el logo y su lema.
+   ========================================================================== */
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: var(--e-3);
+}
+
+/* El logo es ancho (2,4:1) y lleva el nombre dibujado dentro. Limitarlo por
+   altura lo encoge hasta que "LA BODEGA DE SARA" deja de leerse, así que se
+   dimensiona por ANCHO y se le deja sitio de verdad. */
+.marca img {
+  width: clamp(9.5rem, 22vw, 13rem);
+  height: auto;
+}
+
+/* El lema sólo aparece cuando sobra espacio: el logo ya dice el nombre y en
+   pantallas medianas sólo sería ruido al lado de un trazo a mano. */
+.marca span {
+  display: none;
+  padding-left: var(--e-4);
+  border-left: 1px solid var(--borde);
+  margin-top: 0;
+  color: var(--texto-tenue);
+}
+
+@media (min-width: 75rem) {
+  .marca span { display: block; }
+}
+
+/* ---- El pie, con la copa suelta ---- */
+
+.pie__marca {
+  display: flex;
+  align-items: center;
+  gap: var(--e-3);
+}
+
+/* Sobre fondo oscuro se usa la variante clara del logo, no un filtro: un
+   invert() volvería cian el rojo del vino, que es lo único que el logo no
+   puede perder. */
+.pie__marca img {
+  height: 3.2rem;
+  width: auto;
+}
+
+.pie__nombre { display: block; }

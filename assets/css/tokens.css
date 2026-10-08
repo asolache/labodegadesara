@@ -6,27 +6,33 @@
 
 :root {
   /* ---------- Color · Paleta de marca ------------------------------------
-     Sacada de la luz de las fotos de Sara: penumbra cálida, foco dorado,
-     cerámica y vino. Nada de negro puro ni blanco puro: siempre con
-     temperatura, porque la marca es acogedora, no clínica.                */
+     Sacada del logo, no al revés. El logo es un trazo negro sobre blanco con
+     una mancha de vino roja: tres colores y ninguno cálido-terroso. La web
+     venía de una paleta crema-oro-granate que no compartía ni uno, así que el
+     logo quedaba pegado encima en lugar de formar parte.
 
-  --c-crema:        #faf6f0; /* fondo principal, "papel de carta"          */
-  --c-crema-2:      #f2eade; /* fondo alterno de secciones                 */
-  --c-arena:        #e6dac7; /* bordes suaves, separadores                 */
+     Los tres colores están medidos sobre el propio fichero del logo.         */
 
-  --c-tinta:        #2a211c; /* texto principal (marrón muy oscuro)        */
-  --c-tinta-suave:  #5c4f47; /* texto secundario                           */
-  --c-tinta-tenue:  #8a7b70; /* metadatos, pies de foto                    */
+  --c-papel:        #fdfcfb; /* el blanco del logo, con un punto de calidez  */
+  --c-papel-2:      #f4f1ed; /* fondo alterno de secciones, apenas perceptible*/
+  --c-arena:        #e4ded6; /* bordes y separadores                          */
 
-  --c-oro:          #b47d2b; /* acento principal: la luz de las fotos      */
-  --c-oro-claro:    #d9a441; /* hover, detalles, subrayados                */
-  --c-oro-velo:     #f5e6cd; /* fondos de etiqueta                         */
+  --c-tinta:        #14110f; /* el negro del trazo, apenas cálido             */
+  --c-tinta-suave:  #504a45; /* texto secundario                              */
+  --c-tinta-tenue:  #857d76; /* metadatos, pies de foto                       */
 
-  --c-vino:         #6b2333; /* acento profundo: tinto                     */
-  --c-oliva:        #6a6a4c; /* acento terciario: campo, viña              */
+  --c-rojo:         #c72a2e; /* EL color del logo: la mancha de vino          */
+  --c-rojo-hondo:   #9e2024; /* su versión oscura, para estados               */
+  --c-rojo-velo:    #fbe9e9; /* fondo de etiquetas                            */
+  --c-rojo-claro:   #e8706f; /* el rojo, aclarado para leerse sobre penumbra   */
 
-  --c-penumbra:     #191310; /* fondo oscuro (hero, footer)                */
-  --c-penumbra-2:   #241b16; /* superficie elevada sobre penumbra          */
+  --c-oliva:        #6a6a4c; /* acento terciario: campo, viña                 */
+
+  --c-penumbra:     #16110e; /* fondo oscuro: lo piden las fotos              */
+  --c-penumbra-2:   #211a15; /* superficie elevada sobre penumbra             */
+
+  /* El dorado sale de la paleta de interfaz: no está en el logo. La calidez
+     dorada sigue viviendo donde le corresponde, en las propias fotografías. */
 
   --c-ok:           #4f7a52;
   --c-alerta:       #a8452f;
@@ -35,22 +41,22 @@
      Usa SIEMPRE estos en los componentes. Si algún día la marca cambia de
      paleta, sólo se reasignan aquí arriba.                                */
 
-  --fondo:            var(--c-crema);
-  --fondo-alt:        var(--c-crema-2);
+  --fondo:            var(--c-papel);
+  --fondo-alt:        var(--c-papel-2);
   --fondo-oscuro:     var(--c-penumbra);
-  --superficie:       #fffdfa;
+  --superficie:       #ffffff;
   --borde:            var(--c-arena);
-  --borde-fuerte:     #d3c3a9;
+  --borde-fuerte:     #cdc5ba;
 
   --texto:            var(--c-tinta);
   --texto-suave:      var(--c-tinta-suave);
   --texto-tenue:      var(--c-tinta-tenue);
-  --texto-inverso:    #f6efe4;
-  --texto-inverso-2:  #c9bcab;
+  --texto-inverso:    #f7f4f0;
+  --texto-inverso-2:  #c4bdb5;
 
-  --acento:           var(--c-oro);
-  --acento-hover:     var(--c-oro-claro);
-  --foco:             var(--c-oro-claro);
+  --acento:           var(--c-rojo);
+  --acento-hover:     var(--c-rojo-hondo);
+  --foco:             var(--c-rojo);
 
   /* ---------- Tipografía --------------------------------------------------
      Fraunces: serif variable, cálida y artesanal → titulares.

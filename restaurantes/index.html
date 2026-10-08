@@ -4,13 +4,13 @@
 <!-- #incluir head -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#191310">
+<meta name="theme-color" content="#14110f">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="La Bodega de Sara">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/img/favicon.svg">
+<link rel="icon" href="/assets/img/favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="/assets/img/icono.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -411,8 +411,9 @@
 
 <header class="cabecera" data-cabecera>
   <div class="contenedor cabecera__interior">
-    <a class="marca" href="/">
-      La Bodega de Sara
+    <a class="marca" href="/" aria-label="La Bodega de Sara · inicio">
+      <img src="/assets/img/logo.png" alt="La Bodega de Sara"
+           width="560" height="235" fetchpriority="high" decoding="async">
       <span>Vino sin complicaciones</span>
     </a>
 
@@ -718,7 +719,11 @@
   <div class="contenedor">
     <div class="pie__rejilla">
       <div>
-        <h2>La Bodega de Sara<span>Vino sin complicaciones</span></h2>
+        <h2 class="pie__marca">
+          <img src="/assets/img/icono-claro.png" alt="" width="256" height="256" loading="lazy">
+          <span class="pie__nombre">La Bodega de Sara
+            <span>Vino sin complicaciones</span></span>
+        </h2>
         <p>Te hablo del vino desde su origen. Experiencias,
            cartas con criterio y pequeños productores que merecen ser conocidos.</p>
         <div class="redes">
