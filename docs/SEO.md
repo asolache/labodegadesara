@@ -145,6 +145,9 @@ llega a publicarse.
 
 ---
 
+> **Plan de acción al día:** lo que hay que hacer ahora mismo, por orden de
+> impacto, está en [PLAN-SEO.md](PLAN-SEO.md), con doce artículos ya elegidos.
+
 ## 6 · Lo que falta y no depende del código
 
 El SEO técnico está hecho. Lo que queda son cosas del mundo real, y pesan más

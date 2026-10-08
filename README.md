@@ -56,6 +56,7 @@ No hay `npm install`. Sólo hace falta Node 18 o superior.
 | [Operativa de contenidos](docs/OPERATIVA-CONTENIDOS.md) | Montaje de Google Sheets y Docs, publicación, alojamiento |
 | [Propuesta de diseño](docs/PROPUESTA-DISENO.md) | Decisiones de marca, arquitectura y accesibilidad |
 | [SEO y visibilidad](docs/SEO.md) | Palabras clave, datos estructurados y optimización para IA |
+| [Plan de acción SEO](docs/PLAN-SEO.md) | Qué hacer ahora, por orden de impacto, y 12 artículos listos para escribir |
 
 ## Cómo llega el contenido a la web
 
