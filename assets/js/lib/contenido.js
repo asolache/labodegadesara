@@ -122,14 +122,21 @@ export function ordenarCatas(catas) {
  * y lo guarda ya convertido.
  *
  * @param {Object} fila
+ * @param {Object} [opciones]
+ * @param {boolean} [opciones.incluirRetirados] devuelve también las filas con
+ *        `publicar` en no, marcadas con `publicar: false`. El sincronizador lo
+ *        necesita para distinguir «Sara ha retirado este artículo» de «la fila
+ *        ya no está en la hoja», que no significan lo mismo.
  * @returns {Object|null}
  */
-export function normalizarPost(fila) {
+export function normalizarPost(fila, { incluirRetirados = false } = {}) {
   const titulo = campo(fila, 'titulo', 'title', 'nombre');
   if (!titulo) return null;
 
+  // "publicar" vacío se interpreta como sí, igual que en las catas.
   const publicarBruto = campo(fila, 'publicar', 'publicado', 'visible', 'activo');
-  if (publicarBruto && !esSi(publicarBruto)) return null;
+  const publicar = !publicarBruto || esSi(publicarBruto);
+  if (!publicar && !incluirRetirados) return null;
 
   const fechaTexto = campo(fila, 'fecha', 'date');
   const fecha = aFecha(fechaTexto);
@@ -148,7 +155,8 @@ export function normalizarPost(fila) {
     alt: campo(fila, 'alt', 'texto_alternativo', 'descripcion_imagen'),
     categoria: campo(fila, 'categoria', 'tema', 'seccion') || 'Historias',
     autor: campo(fila, 'autor') || 'Sara',
-    destacado: esSi(campo(fila, 'destacado', 'destacada'))
+    destacado: esSi(campo(fila, 'destacado', 'destacada')),
+    publicar
   };
 }
 

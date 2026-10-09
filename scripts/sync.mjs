@@ -190,9 +190,28 @@ async function sincronizarBlog() {
   const anteriores = await leerJSON('data/blog.json');
   const posts = [];
 
-  for (const fila of filas) {
-    const post = normalizarPost(fila);
-    if (!post) continue;
+  // Deja constancia de lo que ha llegado. Si algún día la hoja vuelve a venir
+  // vacía o con las columnas renombradas, el registro lo dice en una línea en
+  // lugar de obligar a deducirlo de un "0 artículos publicados".
+  log.info(`${filas.length} ${filas.length === 1 ? 'fila' : 'filas'} en la hoja` +
+    (filas.length ? ` · columnas: ${Object.keys(filas[0]).join(', ')}` : ''));
+
+  // Dos pasadas: primero se mira la hoja completa —incluidas las filas
+  // retiradas— para saber de qué artículos habla, y sólo después se publican.
+  const enHoja = filas
+    .map(f => normalizarPost(f, { incluirRetirados: true }))
+    .filter(Boolean);
+
+  if (!enHoja.length && filas.length) {
+    log.aviso('Ninguna fila tiene título: ¿se ha renombrado la columna "titulo"?');
+  }
+
+  for (const post of enHoja) {
+    if (!post.publicar) {
+      log.aviso(`«${post.titulo}» marcado como no publicar: se retira`);
+      continue;
+    }
+    delete post.publicar;
 
     // El cuerpo puede venir de un Google Doc.
     if (post.documento) {
@@ -222,6 +241,21 @@ async function sincronizarBlog() {
 
     if (!post.resumen) post.resumen = resumir(post.cuerpo);
     posts.push(post);
+  }
+
+  /* Un artículo publicado no se despublica solo.
+     Si una fila desaparece de la hoja —se borra sin querer, se mueve a otra
+     pestaña, se vacía la pestaña entera— lo que ya está publicado se queda.
+     Pasó el 30/09/2026: la pestaña se quedó sin filas y la sincronización se
+     llevó por delante los tres artículos que había, con sus direcciones ya
+     indexadas. Una dirección publicada es una promesa; sólo se rompe a
+     propósito, y a propósito significa poner "no" en la columna "publicar".  */
+  const slugsEnHoja = new Set(enHoja.map(p => p.slug));
+  for (const previo of anteriores) {
+    if (slugsEnHoja.has(previo.slug) || !previo.cuerpo) continue;
+    log.aviso(`«${previo.titulo}» ya no está en la hoja: se conserva lo publicado`);
+    log.info('  para retirarlo, pon "no" en la columna "publicar" de su fila');
+    posts.push(previo);
   }
 
   const ordenados = ordenarPosts(posts);
@@ -265,6 +299,15 @@ async function generarArticulos(posts) {
 
     const cuerpoHTML = aHTML(post.cuerpo);
 
+    // La descripción de un resultado de búsqueda tiene sitio para unos 155
+    // caracteres. Cuando el resumen de Sara es un titular corto —"Conoce el
+    // alma de este proyecto"— se completa con el arranque del artículo en
+    // lugar de dejar el hueco a medias y que Google se invente el resto. El
+    // resumen que se ve en la web sigue siendo el suyo, tal cual.
+    const descripcionSEO = post.resumen.length >= 70
+      ? post.resumen
+      : resumir(`${post.resumen.replace(/[.·\s]+$/, '')}. ${post.cuerpo}`, 155);
+
     // El artículo se declara como BlogPosting dentro del mismo grafo que el
     // negocio y Sara, para que quede claro quién lo firma y con qué autoridad.
     const articulo = {
@@ -272,7 +315,7 @@ async function generarArticulos(posts) {
       '@id': `${DOMINIO}${rutaPost}#articulo`,
       headline: post.titulo.slice(0, 110),
       name: post.titulo,
-      description: post.resumen,
+      description: descripcionSEO,
       image: imagenAbsoluta,
       datePublished: fecha ? fecha.toISOString() : undefined,
       dateModified: fecha ? fecha.toISOString() : undefined,
@@ -293,7 +336,7 @@ async function generarArticulos(posts) {
     const definicion = {
       url: rutaPost,
       titulo: tituloPagina,
-      descripcion: post.resumen,
+      descripcion: descripcionSEO,
       imagen,
       imagenAlt: post.alt || post.titulo,
       tipoPagina: 'WebPage',

@@ -143,7 +143,19 @@ En la siguiente sincronización desaparecen el artículo y su página, pero la
 fila se queda en la hoja: si algún día quieres recuperarlo, vuelves a poner
 `SÍ` y reaparece tal cual.
 
-**No borres la fila** salvo que quieras perderlo de verdad.
+**Esa es la única manera de retirarlo.** Borrar la fila no lo retira: un
+artículo que ya se ha publicado tiene una dirección que puede estar enlazada,
+compartida por WhatsApp o indexada en Google, así que se queda publicado
+aunque su fila desaparezca de la hoja. Se hizo a propósito después de que una
+pestaña vacía se llevara por delante tres artículos de golpe (§10).
+
+O sea:
+
+| En la hoja | Qué pasa en la web |
+|---|---|
+| `publicar` = `NO` | El artículo se retira y su página desaparece |
+| Se borra la fila | El artículo **sigue publicado**, tal como estaba |
+| Se vacía la pestaña entera | Todos siguen publicados |
 
 ---
 
@@ -322,6 +334,16 @@ Netlify.
 
 Todo lo demás se puede deshacer: **Archivo → Historial de versiones**.
 
+> **El 30 de septiembre de 2026 la pestaña «Blog» se quedó sin filas** y la
+> sincronización de esa tarde borró los tres artículos que había, con sus
+> páginas y sus direcciones. Nadie se dio cuenta hasta nueve días después,
+> porque no hubo ningún error: la hoja se leyó bien y, simplemente, no decía
+> nada.
+>
+> Ya no puede volver a pasar: lo que está publicado se conserva aunque su
+> fila desaparezca, y el registro de cada sincronización escribe cuántas
+> filas ha leído y con qué columnas, para que un vaciado se vea a la primera.
+
 ---
 
 ## 11 · Para Álvaro
@@ -363,3 +385,9 @@ regresión no llega a publicarse.
   distintas, y eso Google lo penaliza.
 - **Google Docs mete basura al exportar.** El nombre de la pestaña («Pestaña
   1») y el título repetido se limpian solos al descargar.
+- **Lo publicado no se despublica solo.** Una sincronización que trae menos
+  contenido del que había no es una orden de borrar: puede ser una fila movida
+  sin querer, una pestaña vaciada o una columna renombrada. Retirar un
+  artículo exige decirlo (`publicar` = `NO`); el silencio conserva. Y cuando
+  el contenido baja, el registro lo cuenta —filas leídas y columnas
+  encontradas— en lugar de limitarse a un «0 artículos publicados».
