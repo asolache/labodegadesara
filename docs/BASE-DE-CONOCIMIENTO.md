@@ -98,7 +98,7 @@ En la **hoja de contenidos**, pestaña **Blog**, una fila nueva debajo de la
 | **imagen** | La foto de portada — ver [§5](#5--fotos) | No |
 | **alt** | Qué se ve en la foto, para quien no puede verla | No |
 | **autor** | Por defecto, Sara | No |
-| **publicar** | `NO` para dejarlo guardado sin publicar | No |
+| **publicar** | `NO` para dejarlo guardado sin publicar. Déjala vacía y se publica | No |
 
 \* O bien `documento`, o bien escribir el texto en la columna `cuerpo`. Para
 artículos largos, siempre Docs.
@@ -154,8 +154,17 @@ O sea:
 | En la hoja | Qué pasa en la web |
 |---|---|
 | `publicar` = `NO` | El artículo se retira y su página desaparece |
+| `publicar` vacío, `SÍ`, `TRUE`, `X`… | Se publica |
+| `publicar` con cualquier otra cosa | **Se publica**, y el registro deja un aviso |
 | Se borra la fila | El artículo **sigue publicado**, tal como estaba |
 | Se vacía la pestaña entera | Todos siguen publicados |
+
+Lo que retira es un **no** explícito: `NO`, `FALSE`, `0`, `borrador`,
+`cancelada`. Nada más. Antes era al revés —se publicaba sólo lo que dijera
+`SÍ`— y eso convertía cualquier dedazo (`Yes`, una `S` suelta, un acento de
+más) en un artículo que desaparecía sin que nadie lo hubiera pedido. Ahora un
+valor que no se entiende se publica igual y lo avisa, que es un error que se
+arregla solo en vez de pasar desapercibido nueve días.
 
 ---
 

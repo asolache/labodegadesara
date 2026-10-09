@@ -7,7 +7,7 @@
  * columna, se añade aquí y funciona en ambos sitios.
  */
 
-import { esSi } from './csv.js';
+import { esSi, esNo } from './csv.js';
 import { aFecha, aISO, esFutura } from './fecha.js';
 import { resumir } from './markdown.js';
 
@@ -56,7 +56,7 @@ export function normalizarCata(fila) {
   // "publicar" vacío se interpreta como sí: lo normal es que lo que Sara
   // escribe en la hoja vaya a la web. Sólo un "no" explícito la oculta.
   const publicarBruto = campo(fila, 'publicar', 'publicado', 'visible', 'activo');
-  if (publicarBruto && !esSi(publicarBruto)) return null;
+  if (esNo(publicarBruto)) return null;   // sólo un "no" explícito la esconde
 
   const fechaTexto = campo(fila, 'fecha', 'dia', 'date');
   const hora = campo(fila, 'hora', 'time');
@@ -133,9 +133,16 @@ export function normalizarPost(fila, { incluirRetirados = false } = {}) {
   const titulo = campo(fila, 'titulo', 'title', 'nombre');
   if (!titulo) return null;
 
-  // "publicar" vacío se interpreta como sí, igual que en las catas.
+  /* Sólo un "no" explícito retira. Antes se publicaba únicamente lo que
+     dijera "sí", y eso convierte cualquier despiste al escribir —un "Yes",
+     una "S" suelta— en un artículo que desaparece de la web sin que nadie
+     lo haya pedido. Es lo que pasó el 30/09/2026 con los tres que había.
+     Quien escribe en esa columna quiere esconder algo cuando pone "no"; en
+     todo lo demás quiere que se vea. Un valor que no es ni una cosa ni la
+     otra se publica y se avisa, que es el error que se arregla solo. */
   const publicarBruto = campo(fila, 'publicar', 'publicado', 'visible', 'activo');
-  const publicar = !publicarBruto || esSi(publicarBruto);
+  const publicar = !esNo(publicarBruto);
+  const publicarDudoso = Boolean(publicarBruto) && !esSi(publicarBruto) && !esNo(publicarBruto);
   if (!publicar && !incluirRetirados) return null;
 
   const fechaTexto = campo(fila, 'fecha', 'date');
@@ -156,7 +163,11 @@ export function normalizarPost(fila, { incluirRetirados = false } = {}) {
     categoria: campo(fila, 'categoria', 'tema', 'seccion') || 'Historias',
     autor: campo(fila, 'autor') || 'Sara',
     destacado: esSi(campo(fila, 'destacado', 'destacada')),
-    publicar
+    publicar,
+    publicarDudoso,
+    // Lo que ponía literalmente la celda, para poder decirlo en el registro:
+    // sin ver el valor no hay manera de distinguir un "no" de un dedazo.
+    publicarBruto
   };
 }
 

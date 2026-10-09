@@ -107,6 +107,22 @@ export function normalizarClave(clave) {
  * @returns {boolean}
  */
 export function esSi(valor) {
-  return /^(s[ií]|si|true|verdadero|x|1|ok|activo|publicado)$/i
+  return /^(s[ií]|si|s|yes|y|true|verdadero|v|x|✓|✔|1|ok|activo|publicado)$/i
+    .test(String(valor ?? '').trim());
+}
+
+/**
+ * Interpreta como falso los distintos "no" que una persona puede escribir.
+ *
+ * Va aparte de `esSi` a propósito, porque no son lo contrario. Hay un tercer
+ * caso —lo que no es ni una cosa ni la otra— y lo que se haga con él decide
+ * si un despiste esconde contenido o sólo deja un aviso. Quien pregunta
+ * quiere saber si la celda dice que NO, no si deja de decir que sí.
+ *
+ * @param {string} valor
+ * @returns {boolean}
+ */
+export function esNo(valor) {
+  return /^(no|n|false|falso|f|0|oculto|oculta|borrador|draft|cancelad[ao])$/i
     .test(String(valor ?? '').trim());
 }

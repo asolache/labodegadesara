@@ -208,10 +208,18 @@ async function sincronizarBlog() {
 
   for (const post of enHoja) {
     if (!post.publicar) {
-      log.aviso(`«${post.titulo}» marcado como no publicar: se retira`);
+      log.aviso(`«${post.titulo}»: la columna "publicar" dice ` +
+        `${JSON.stringify(post.publicarBruto)} — se retira`);
       continue;
     }
+    if (post.publicarDudoso) {
+      log.aviso(`«${post.titulo}»: la columna "publicar" dice ` +
+        `${JSON.stringify(post.publicarBruto)}, que no es un sí ni un no ` +
+        `reconocidos — se publica igualmente`);
+    }
     delete post.publicar;
+    delete post.publicarDudoso;
+    delete post.publicarBruto;
 
     // El cuerpo puede venir de un Google Doc.
     if (post.documento) {
