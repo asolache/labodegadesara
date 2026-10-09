@@ -53,10 +53,21 @@
   --texto-tenue:      var(--c-tinta-tenue);
   --texto-inverso:    #f7f4f0;
   --texto-inverso-2:  #c4bdb5;
+  --texto-inverso-3:  #9e968e;  /* letra pequeña del pie: legal y alcohol   */
 
   --acento:           var(--c-rojo);
   --acento-hover:     var(--c-rojo-hondo);
   --foco:             var(--c-rojo);
+
+  /* Translúcidos. Van aquí y no sueltos por main.css porque son los que se
+     quedaron atrás en el rediseño: la cabecera siguió pintando la crema de
+     la paleta anterior sobre un fondo que ya era otro, y el halo del foco
+     siguió siendo el rojo de antes. Un color escrito a pelo no se entera de
+     que la marca ha cambiado.                                              */
+  --velo-cabecera:        rgba(253, 252, 251, 0.86); /* --c-papel al 86 %   */
+  --borde-inverso:        rgba(247, 244, 240, 0.14); /* separador en oscuro */
+  --borde-inverso-fuerte: rgba(247, 244, 240, 0.32); /* botón de línea      */
+  --foco-halo:            rgba(163, 32, 48, 0.20);   /* --c-rojo al 20 %    */
 
   /* ---------- Tipografía --------------------------------------------------
      Cormorant Garamond: serif de contraste alto y asta fina → titulares.

@@ -241,7 +241,7 @@ hr {
   position: sticky;
   top: 0;
   z-index: var(--z-nav);
-  background: rgba(250, 246, 240, 0.86);
+  background: var(--velo-cabecera);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
@@ -259,31 +259,12 @@ hr {
   align-items: center;
   justify-content: space-between;
   gap: var(--e-4);
-  min-height: 4.9rem;
+  min-height: 4.25rem;
 }
 
-.marca {
-  font-family: var(--font-titulo);
-  font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  flex-shrink: 0;
-}
-
-.marca:hover { color: var(--texto); }
-
-.marca span {
-  display: block;
-  font-family: var(--font-texto);
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: var(--ls-epigrafe);
-  text-transform: uppercase;
-  color: var(--acento);
-  margin-top: 2px;
-}
+/* La cabecera no lleva texto: sólo el logo. Lo que queda aquí es que no se
+   encoja cuando la navegación pide sitio; su tamaño está en el apartado 10. */
+.marca { flex-shrink: 0; }
 
 .nav__lista {
   display: flex;
@@ -347,7 +328,7 @@ hr {
 @media (max-width: 60rem) {
   .nav__lista {
     position: fixed;
-    inset: 4.9rem 0 auto 0;
+    inset: 4.25rem 0 auto 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -441,7 +422,7 @@ hr {
 
 .boton--claro {
   background: transparent;
-  border-color: rgba(246, 239, 228, 0.35);
+  border-color: var(--borde-inverso-fuerte);
   color: var(--texto-inverso);
 }
 
@@ -480,7 +461,7 @@ hr {
 
 .etiqueta--vino  { background: var(--c-rojo-velo); color: var(--c-rojo-hondo); }
 .etiqueta--oliva { background: #eceee2; color: #4f5137; }
-.etiqueta--agotado { background: #efe9e3; color: var(--texto-tenue); }
+.etiqueta--agotado { background: var(--c-arena); color: var(--texto-suave); }
 
 /* ---- Tarjeta genérica ---- */
 
@@ -656,7 +637,7 @@ hr {
 }
 
 .cata[data-estado='agotado'] { opacity: 0.72; }
-.cata[data-estado='agotado'] .cata__fecha { background: #efe9e3; }
+.cata[data-estado='agotado'] .cata__fecha { background: var(--c-arena); }
 .cata[data-estado='agotado'] .cata__dia { color: var(--texto-tenue); }
 .cata[data-estado='agotado'] .cata__mes { color: var(--texto-tenue); }
 
@@ -781,7 +762,7 @@ hr {
 .campo textarea:focus {
   outline: none;
   border-color: var(--acento);
-  box-shadow: 0 0 0 3px rgba(199, 42, 46, 0.18);
+  box-shadow: 0 0 0 3px var(--foco-halo);
 }
 
 .campo textarea { resize: vertical; min-height: 8rem; }
@@ -1191,9 +1172,9 @@ hr {
   justify-content: space-between;
   gap: var(--e-3);
   padding-top: var(--e-5);
-  border-top: 1px solid rgba(246, 239, 228, 0.12);
+  border-top: 1px solid var(--borde-inverso);
   font-size: var(--t-xs);
-  color: #9a8b7c;
+  color: var(--texto-inverso-3);
 }
 
 .pie__legal ul { display: flex; flex-wrap: wrap; gap: var(--e-4); }
@@ -1204,7 +1185,7 @@ hr {
   display: grid;
   place-items: center;
   width: 2.5rem; height: 2.5rem;
-  border: 1px solid rgba(246, 239, 228, 0.2);
+  border: 1px solid var(--borde-inverso);
   border-radius: var(--r-full);
   transition: background var(--t-rapida) var(--ease),
               border-color var(--t-rapida) var(--ease);
@@ -1220,7 +1201,7 @@ hr {
 .pie__alcohol {
   margin-top: var(--e-4);
   font-size: var(--t-xs);
-  color: #8a7c6d;
+  color: var(--texto-inverso-3);
 }
 
 /* ==========================================================================
@@ -1238,7 +1219,7 @@ hr {
 /* ==========================================================================
    10 · MARCA
    El logo es un trazo a mano: necesita aire alrededor y ningún adorno que
-   compita con él. Por eso la cabecera no lleva más que el logo y su lema.
+   compita con él. Por eso la cabecera no lleva nada más que el logo.
    ========================================================================== */
 
 .marca {
@@ -1247,12 +1228,17 @@ hr {
   gap: var(--e-3);
 }
 
-/* El logo es ancho (2,4:1) y lleva el nombre dibujado dentro. Limitarlo por
-   altura lo encoge hasta que "LA BODEGA DE SARA" deja de leerse, así que se
-   dimensiona por ANCHO y se le deja sitio de verdad. */
+/* El logo es ancho (2,4:1) y lleva el nombre dibujado dentro, así que la
+   medida que importa es la ALTURA: es la que decide lo que ocupa la cabecera.
+   Dimensionarlo por ancho fue un error: 13rem de ancho son 5,45rem de alto,
+   más que la propia cabecera, que crecía detrás de él. De ahí que el logo y
+   la barra se vieran enormes.
+   Ahora manda la altura —entre 2,3 y 2,75rem— y el ancho sale solo. Con la
+   cabecera en 4,25rem, el logo ocupa dos tercios y respira por arriba y por
+   abajo, que es como se ve una cabecera bien puesta. */
 .marca img {
-  width: clamp(9.5rem, 22vw, 13rem);
-  height: auto;
+  height: clamp(2.3rem, 5.2vw, 2.75rem);
+  width: auto;
 }
 
 /* ---- El pie, con la copa suelta ---- */
